@@ -3,7 +3,7 @@ import React from 'react'
 export const SignInComponent = () => {
 
     const buttonStyle = {
-        backgroundColor: '#ff7e31', // orange color
+        backgroundColor: '#ff7e31',
         color: 'white',
         padding: '10px 20px',
         border: 'none',
