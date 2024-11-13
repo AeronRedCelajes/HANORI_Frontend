@@ -1,0 +1,16 @@
+/* SignInComponent.css */
+.custom-button {
+    background-color: #ed5b2d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #d94b2d; /* Darker color on hover */
+    color: rgb(85, 28, 2);
+}

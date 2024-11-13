@@ -1,11 +1,13 @@
-import { NavbarComponent } from "./components/NavbarComponent"
+
+import LogInComponent from "./components/LogInComponent"
 import { SignInComponent } from "./components/SignInComponent"
 
 function App() {
 
   return (
     <>
-      < SignInComponent />
+      {/* <SignInComponent /> */}
+      <LogInComponent />
     </>
   )
 }
