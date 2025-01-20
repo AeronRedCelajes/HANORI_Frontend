@@ -5,7 +5,6 @@ import { NavbarComponent } from './NavbarComponent';
 export const HomeComponents = () => {
   return (
     <>
-        {/*< NavbarComponent />*/}
         <div className="landing-page">
             <div className="header-section">
                 < NavbarComponent />

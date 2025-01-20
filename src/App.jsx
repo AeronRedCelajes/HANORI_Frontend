@@ -1,6 +1,6 @@
 import { NavbarComponent } from "./components/NavbarComponent"
 import { SignInComponent } from "./components/SignInComponent"
-import { HomeComponents } from "./components/HomeComponents"
+import { HomeComponents } from "./components/HomeComponent"
 
 function App() {
 
