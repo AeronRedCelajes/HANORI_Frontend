@@ -1,16 +1,7 @@
 import React from 'react'
+import '../style/SignIn.css';
 
 export const SignInComponent = () => {
-
-    const buttonStyle = {
-        backgroundColor: '#ff7e31',
-        color: 'white',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        fontSize: '16px',
-        cursor: 'pointer',
-      };
 
   return (
     <div className='container-fluid vh-100 d-flex p-0'>
@@ -25,20 +16,21 @@ export const SignInComponent = () => {
                     <img src='/src/assets/HANR_LOGO-4.png' alt='University' className='w-50 h-50'></img>
                 </div>
 
-                <h2 className='text-center'>Sign In to your Account</h2>
+                <h3 className='text-center mb-3'>Sign In to your Account</h3>
+                
                 <form className='w-100'>
                     <div className='form-group'>
                         <label for='email'>Email</label>
                         <input type='email' id='email' className='form-control' placeholder='user@abc.com' required></input>
                     </div>
 
-                    <div className='form-group'>
+                    <div className='form-group mt-2'>
                         <label for='password'>Password</label>
                         <input type='password' id='password' className='form-control' placeholder='*********' required></input>
                     </div>
 
                     <a href='#' className='d-block mb-3 text-danger text-end'>Forgot Password?</a>
-                    <button type='submit' className='btn w-100 fw-semibold' style={buttonStyle}>Login</button>
+                    <button type='submit' className='btn w-100' style={buttonStyle}>Login</button>
                 </form>
             </div>
         </div>
