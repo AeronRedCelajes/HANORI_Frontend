@@ -1,0 +1,95 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .landing-page {
+    overflow: hidden;
+  }
+  
+  /* Header Section */
+  .header-section {
+    background: #1c1c1e; /* Dark background */
+    color: white;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.header-section .content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.header-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.header-section .btn-primary {
+  background-color: #ff6600;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+}
+
+.header-section .btn-primary:hover {
+  background-color: #e65500;
+}
+
+/* Features Section */
+.features-section {
+  background-color: #f9f9f9;
+  padding: 50px;
+  text-align: center;
+}
+
+.features-section h2 {
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 300px;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.about-section {
+    background: #1c1c1e; /* Dark background */
+    color: white;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    clip-path: polygon(0 0%, 100% 15%, 100% 100%, 0 100%);
+
+
+}
