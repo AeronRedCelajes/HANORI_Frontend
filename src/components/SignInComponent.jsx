@@ -38,7 +38,7 @@ export const SignInComponent = () => {
                     </div>
 
                     <a href='#' className='d-block mb-3 text-danger text-end'>Forgot Password?</a>
-                    <button type='submit' className='btn w-100' style={buttonStyle}>Login</button>
+                    <button type='submit' className='btn w-100 fw-semibold' style={buttonStyle}>Login</button>
                 </form>
             </div>
         </div>
