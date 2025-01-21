@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
   }
   
   .landing-page {
@@ -13,6 +15,7 @@ body {
 }
 
   .header-section {
+    font-family: 'Poppins', sans-serif;
     background: #2C292A;
     color: white;
     padding: 50px;
@@ -22,21 +25,31 @@ body {
 }
 
 .features-section {
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
   padding: 50px;
   text-align: center;
 }
 
 .about-section {
+    font-family: 'Poppins', sans-serif;
     background: #2C292A;
     color: white;
-    padding: 50px;
-    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 50px;
     position: relative;
-    clip-path: polygon(0 3%, 100% 18%, 100% 100%, 0 100%);
+    clip-path: polygon(0 2%, 100% 17%, 100% 100%, 0 100%); 
 }
 
 .about-orange-border {
     background: #EB5A2B;
     clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+}
+
+.footer-section {
+  font-family: 'Poppins', sans-serif;
+  background: #2C292A;
+  padding: 30px;
+  text-align: center;
+  color: #F6F6E9;
 }
