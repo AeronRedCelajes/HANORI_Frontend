@@ -1,3 +1,13 @@
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+.landing-page {
+  position: fixed;
+  z-index: 2000;
+  width: 100%;
+}
+
 .header-orange-border {
   background: #EB5A2B;
   clip-path: polygon(0 0, 100% 0, 100% 77%, 0 97%);
