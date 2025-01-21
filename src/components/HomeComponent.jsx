@@ -1,17 +1,20 @@
 import React from 'react';
 import '../style/home.css';
-import { NavbarComponent } from './NavbarComponent';
-import { HeaderComponent } from './HeaderComponent';
-import { FeaturesComponent } from './FeaturesComponent';
 import { AboutComponent } from './AboutComponent';
+import { FeaturesComponent } from './FeaturesComponent';
 import { FooterComponent } from './FooterComponent';
+import { HeaderComponent } from './HeaderComponent';
+import { NavbarComponent } from './NavbarComponent';
 
     export const HomeComponents = () => {
     return (
         <>
             <div className="landing-page">
-            < NavbarComponent />
-                <div className='header-orange-border'>
+                < NavbarComponent />
+            </div>
+
+            <div>
+            <   div className='header-orange-border'>
                     <div className="header-section">
                         <HeaderComponent/>
                     </div>

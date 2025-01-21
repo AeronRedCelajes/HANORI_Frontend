@@ -6,6 +6,41 @@
     padding: 50px 20px;
 }
 
+.main-feature-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 160px; 
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .main-feature-title h2 {
+    margin: -25px;
+    padding: 0;
+    font-weight: bold;
+    position: relative;
+  }
+
+  .main-feature {
+    margin: -60px;
+    padding: 0;
+  }
+
+  .main-feature h3 {
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .main-feature p {
+    font-size: 13px;
+    max-width: 300px;
+  }
+  
+  .main-feature-img img {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
 .feature-1 img{
     height: auto;
     width: 90%;

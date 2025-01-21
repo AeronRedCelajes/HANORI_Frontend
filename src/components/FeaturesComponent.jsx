@@ -4,8 +4,46 @@ import '../style/features.css'
 export const FeaturesComponent = () => {
   return (
     <>
+
         <div className='feature'>
+
+        <div className='main-feature-title'>
+            <h2>Main Features</h2>
+        </div>
+
+        <div className="main-feature-container">
+            <div className="main-feature">
+                <div className="main-feature-img"><img src="/src/assets/clock.png" alt="" /></div>
+                <h3>Real-Time Code Assessment</h3>
+                <p>
+                Instantly evaluates student code submissions, providing immediate feedback and scoring to enhance learning efficiency.
+                </p>
+            </div>
+
+            <div className="main-feature">
+                <div className="main-feature-img"><img src="/src/assets/code.png" alt="" /></div>
+                <h3>Code Challenges</h3>
+                <p>
+                Enables educators to design and customize coding challenges from scratch, allowing full control over content and difficulty.
+                </p>
+            </div>
+
+            <div className="main-feature">
+                <div className="main-feature-img"><img src="/src/assets/rocket.png" alt="" /></div>
+                <h3>Comprehensive Performance Tracking</h3>
+                <p>
+                Tracks student progress over time, with in-depth reports and analytics for both students and instructors.
+                </p>
+            </div>
+        </div>
+
+
+
+
+
             <div className='row g-2'>
+
+                
                 <div className='col-md-6 d-flex justify-content-center'>
                     <div className='feature-desc-1'>
                         <h2>Automated Code Checker</h2>

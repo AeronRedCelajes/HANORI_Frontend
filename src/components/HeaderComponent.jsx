@@ -17,7 +17,7 @@ export const HeaderComponent = () => {
             </div>
 
             <div className='col-md-5'>
-                <div className='image'>
+                <div className='header-image'>
                     <img src='/src/assets/computer.png'/>
                 </div>
             </div>
