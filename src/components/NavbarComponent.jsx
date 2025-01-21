@@ -6,7 +6,7 @@ export const NavbarComponent = () => {
     <nav className="navbar">
       <ul className="nav-list">
         <li className="nav-item">
-          <a className="hanori_logo" href="#home"></a> 
+          <a className="hanori_logo" href="#home"><img src='src/assets/navbar_logo.png' alt='logo'/></a> 
         </li>
         <div className="auth-buttons"> 
           <li className="nav-item">

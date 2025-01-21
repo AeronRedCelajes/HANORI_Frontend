@@ -1,0 +1,40 @@
+.header-section-text {
+    padding-top: 80px;
+    padding-left: 30px;
+}
+
+.header-section-title {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #EB5A2B;
+    color: white;
+    margin-left: 0px;
+    padding: 15.5px 80px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-link:hover {
+    background-color: #d45a1f;
+}
+
+.image img {
+    max-width: none;
+    width: 100%; 
+    height: auto; 
+    position: relative;
+    z-index: 1;
+}
+
+.image {
+    overflow: visible; 
+    position: relative;
+    padding-top: 50px;
+}
