@@ -10,26 +10,26 @@ import { FooterComponent } from './FooterComponent';
     return (
         <>
             <div className="landing-page">
-            < NavbarComponent />
+                < NavbarComponent />
                 <div className='header-orange-border'>
                     <div className="header-section">
                         <HeaderComponent/>
                     </div>
                 </div>
-            </div>
             
-            <div className="features-section">
-                <FeaturesComponent/>
-            </div>
-            
-            <div className='about-orange-border'>
-                <div className='about-section'>
-                    <AboutComponent />
+                <div className="features-section">
+                    <FeaturesComponent/>
                 </div>
-            </div>
+                
+                <div className='about-orange-border'>
+                    <div className='about-section'>
+                        <AboutComponent />
+                    </div>
+                </div>
 
-            <div className='footer-section'>
-                <FooterComponent/>
+                <div className='footer-section'>
+                    <FooterComponent/>
+                </div>
             </div>
         </>
   )

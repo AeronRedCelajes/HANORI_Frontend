@@ -1,3 +1,6 @@
+.landing-page{
+  overflow: hidden;
+}
 .header-orange-border {
   background: #EB5A2B;
   clip-path: polygon(0 0, 100% 0, 100% 77%, 0 97%);
@@ -26,12 +29,12 @@
     padding-top: 150px;
     position: relative;
     clip-path: polygon(0 2%, 100% 17%, 100% 100%, 0 100%); 
-
 }
 
 .about-orange-border {
     background: #EB5A2B;
     clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+    
 }
 
 .footer-section {
