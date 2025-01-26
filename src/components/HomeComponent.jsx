@@ -1,16 +1,17 @@
 import React from 'react';
-import '../style/home.css';
+import '../style/home.css'
+
 import { AboutComponent } from './AboutComponent';
 import { FeaturesComponent } from './FeaturesComponent';
 import { FooterComponent } from './FooterComponent';
 import { HeaderComponent } from './HeaderComponent';
-import { NavbarComponent } from './NavbarComponent';
+import { LandingNavbarComponent } from './LandingNavbarComponent';
 
     export const HomeComponents = () => {
     return (
         <>
             <div className="landing-page">
-                < NavbarComponent />
+                <LandingNavbarComponent/>
             </div>
 
             <div>

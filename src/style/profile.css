@@ -54,6 +54,7 @@
 
 .info-container{
     background-color: #ff722b;
+    box-shadow: 0 4px 6px rgba(117, 117, 117, 0.2);
     border-radius: 10px;
     overflow: visible;
 }
