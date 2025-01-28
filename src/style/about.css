@@ -12,7 +12,7 @@
     text-align: center;
 }
 
-.container {
+.team-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

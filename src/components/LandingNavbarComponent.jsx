@@ -1,7 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../style/navbar.css';
 
 export const LandingNavbarComponent = () => {
+
+  const navigate_signin = useNavigate();
+
+  const handleSignInClick = () => {
+    navigate_signin('/signin');
+  };
+
   return (
     <>
         <nav className="landing-navbar">
@@ -10,7 +18,7 @@ export const LandingNavbarComponent = () => {
               <a className="hanori_logo" href="#home"><img src='src/assets/navbar_logo.png' alt='logo'/></a> 
               </li>
               <div className="auth-buttons"> 
-              <button className="sign-in">
+              <button className="sign-in" onClick={handleSignInClick}>
                   Sign In
               </button>
               <button className="sign-up">

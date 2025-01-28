@@ -11,7 +11,7 @@ export const AboutComponent = () => {
         <p>We are HANORI, a group of passionate developers—Hanna Condada, Angelica Mae Manliguez, Noriel Achero, and Erikka Marielle Enaje—dedicated to advancing learning through our intelligent code assessment platform. HANORI supports students and educators by providing accurate, real-time feedback and insights on coding proficiency, empowering the next generation of developers to hone their skills and achieve success.</p>
       </div>
 
-      <div className='container'>
+      <div className='container team-container'>
         <div className='row g-4'>
           <div className='col-md-3'>
               <div className='card team-card'>

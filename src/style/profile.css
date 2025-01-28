@@ -4,6 +4,90 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.navbar-profile {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fde7de;
+    box-shadow: 0 3px 4px rgba(89, 89, 89, 0.244);
+}
+
+.navbar-profile .toggle-btn i{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #B84C20;
+    border: none;
+    margin-inline: 10px;
+}
+
+.navbar-profile .toggle-btn{
+    font-size: 17px;
+    color: #B84C20;
+}
+
+.navbar-profile .toggle-btn:hover{
+    color: #B84C20;
+}
+
+.dashboard-navbar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 15px;
+    margin-right: 10px;
+}
+
+.ping {
+    color: #B84C20;
+    font-size: smaller;
+}
+
+.dashboard-navbar .bi{
+    color: #B84C20;
+}
+
+.student-badge {
+    background-color: #84C776;
+    color: #FFF5F1;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.dashboard-navbar .dropdown-toggle{
+    border: none;
+    font-size: 1px;
+}
+
+.profile-dropdown {
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit:fill;
+}
+
+.dashboard-navbar .dropdown-item {
+    color: #C4907B;
+    font-size: smaller;
+}
+  
+.dashboard-navbar .dropdown-item:hover {
+    background-color: #F5DAD0;
+    color: #B84C20;
+    border-left: 5px solid #B84C20;
+}
+
+.dashboard-navbar .dropdown-menu {
+    background-color: #FFF5F1;
+    width: 180px;
+}
+
+
 .cover-container{
     height: 300px;
     background-image: url('/src/assets/univ.png');
@@ -16,6 +100,7 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding: 20px;
+    margin-top: 60px;
     box-sizing: border-box;
     background-color: rgba(67, 67, 67, 0.5);
     background-blend-mode: multiply;
@@ -53,23 +138,27 @@
 }
 
 .info-container{
-    background-color: #ff722b;
-    box-shadow: 0 4px 6px rgba(117, 117, 117, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    padding-bottom: 40px;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .info-container .name{
     font-size: xx-large;
     font-weight: bold;
-    color: #F6F6E9;
+    color: #2C292A;
 }
 
 .info-container .student-no{
     font-size: medium;
     margin-top: -20px;
     padding-bottom: 20px;
-    color: #dedede;
+    color: #7e7e7e;
 }
 
 .details{
@@ -79,13 +168,14 @@
 .details p{
     font-size: medium;
     margin-top: -15px;
-    color: #F6F6E9;
+    color: #454445;
 }
 
 .performance-container{
     background-color: #fffef0;
     border-radius: 10px;
     display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .performance-content .title{

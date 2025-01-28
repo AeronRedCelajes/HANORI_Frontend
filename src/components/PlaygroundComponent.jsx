@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar, Container, Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
 import '../style/playground.css'
 
 export const PlaygroundComponent = () => {
+
+    const navigate_dashboard = useNavigate();
+
+    const handleDashboardClick = () => {
+        navigate_dashboard('/dashboard');
+    };
 
     //dropdown
     const [selectedLanguage, setSelectedLanguage] = useState({ name: 'Java', imgSrc: '/src/assets/java2.png' });
@@ -20,17 +27,17 @@ export const PlaygroundComponent = () => {
 
   return (
     <>
-        <nav className='playground-navbar'>
+        <Navbar className='playground-navbar'>
             <Row>
                 <Col className='home'>
                     <p><a href="#"><span className="bi bi-arrow-left-circle"></span></a>Home</p>
                 </Col>
                 
                 <Col className='signal'>
-                    <p>20 ms <a href="#"><span className="bi bi-moon"></span></a></p>
+                    <p>20 ms <a href="#"><span className="bi bi-moon" onClick={handleDashboardClick}></span></a></p>
                 </Col>
             </Row>
-        </nav>
+        </Navbar>
 
         <div className='playground'>
             <div className='playground-container'>
