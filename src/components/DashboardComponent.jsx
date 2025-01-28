@@ -18,6 +18,11 @@ export const DashboardComponent = () => {
         navigate_profile('/profile');
     };
 
+    const navigate_home = useNavigate();
+    const handleHomeClick = () =>{
+        navigate_home('/home')
+    }
+
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
@@ -62,7 +67,7 @@ export const DashboardComponent = () => {
                                 
                                 <Dropdown.Menu>
                                 <Dropdown.Item href='#' onClick={handleProfileClick}>Boyet Profile Account</Dropdown.Item>
-                                <Dropdown.Item href='#'>Log Out</Dropdown.Item>
+                                <Dropdown.Item href='#' onClick={handleHomeClick}>Log Out</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>

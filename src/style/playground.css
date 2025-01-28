@@ -107,13 +107,6 @@
     background-color: rgba(184, 76, 32, 0.13);
 }
 
-.playground-bottom .bi{
-    font-size: 25px;
-    margin-right: 10px;
-    margin-left: 10px;
-    color: #B84C20;
-}
-
 .playground-bottom .btn{
     background-color: #76C7C5;
     border: 1px solid #76C7C5;
@@ -122,4 +115,9 @@
     font-size: larger;
     padding: 8px;
     padding-inline: 20px;
+}
+
+.playground-bottom .btn:hover{
+    background-color: #629f9e;
+    border: 1px solid #629f9e;
 }

@@ -17,6 +17,7 @@ function App() {
           <Route path='/sandbox' element={<PlaygroundComponent/>}/>
           <Route path='/dashboard' element={<DashboardComponent/>}/>
           <Route path='/profile' element={<ProfileComponent/>}/>
+          <Route path='/home' element={<HomeComponents/>}/>
         </Routes>
     </Router>
     </>

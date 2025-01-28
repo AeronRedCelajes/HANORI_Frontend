@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Container, Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
+import {ProfilePlaygroundNavbarComponent} from './ProfilePlaygroundNavbarComponent'
 import '../style/playground.css'
 
 export const PlaygroundComponent = () => {
@@ -27,26 +28,8 @@ export const PlaygroundComponent = () => {
 
   return (
     <>
-        <Navbar expand='lg' className='navbar-profile'>
-            <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
-            <p>Dashboard</p>
-
-            <div className='dashboard-navbar'>
-                <span className='ping'>20 ms</span>
-                <a href='#'><i className='bi bi-moon'></i></a>
-                <span className='student-badge'>Student</span>
-                <Dropdown align='end'>
-                    <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
-                        <img src='/src/assets/angelica.png' className='profile-image'/>
-                    </Dropdown.Toggle>
-                    
-                    <Dropdown.Menu>
-                    <Dropdown.Item href='#'>Boyet Profile Account</Dropdown.Item>
-                    <Dropdown.Item href='#'>Log Out</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
-        </Navbar>
+        <ProfilePlaygroundNavbarComponent/>
+        
         <div className='playground'>
             <div className='playground-container'>
                 <div className='playground-header'>
@@ -60,7 +43,6 @@ export const PlaygroundComponent = () => {
                         </Col>
 
                         <Col sm={1} className='right-corner'>
-                            <a href='#'><span className='bi bi-gear'></span></a>
                             <DropdownButton className='playground-dropdown' id='language-dropdown' size="sm" title={<><img src={selectedLanguage.imgSrc} style={{ width: '20px', marginRight: '8px' }}/>{selectedLanguage.name} </>} onSelect={handleSelect}>
                                 <Dropdown.Item eventKey="C#"><img src='/src/assets/c.png'/>C#</Dropdown.Item>
                                 <Dropdown.Item eventKey="Java"><img src='/src/assets/java2.png'/>Java</Dropdown.Item>
@@ -73,16 +55,8 @@ export const PlaygroundComponent = () => {
                 </div>
 
                 <div className='playground-bottom'>
-                    <div>
-                        <Row>
-                            <Col sm={9} className='left-corner'>
-                                <a href='#'><span className='bi bi-chat-dots-fill'></span></a>
-                            </Col>
-
-                            <Col sm={2} className='right-corner'>
-                                <Button>Run Code</Button>
-                            </Col>
-                        </Row>
+                    <div className='right-corner'>
+                        <Button>Run Code</Button>
                     </div>
                 </div>
             </div>

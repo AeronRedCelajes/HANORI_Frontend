@@ -1,38 +1,12 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { Navbar, Dropdown, Button } from 'react-bootstrap';
+import { ProfilePlaygroundNavbarComponent } from './ProfilePlaygroundNavbarComponent'
 import '../style/profile.css'
  
 export const ProfileComponent = () => {
 
-    const navigate_dashboard = useNavigate();
-    const handleDashboardClick = () => {
-        navigate_dashboard('/dashboard');
-    };
-
     return (
         <>
-            <Navbar expand='lg' className='navbar-profile'>
-                <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
-                <p>Dashboard</p>
-
-                <div className='dashboard-navbar'>
-                    <span className='ping'>20 ms</span>
-                    <a href='#'><i className='bi bi-moon'></i></a>
-                    <span className='student-badge'>Student</span>
-                    <Dropdown align='end'>
-                        <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
-                            <img src='/src/assets/angelica.png' className='profile-image'/>
-                        </Dropdown.Toggle>
-                        
-                        <Dropdown.Menu>
-                        <Dropdown.Item href='#'>Boyet Profile Account</Dropdown.Item>
-                        <Dropdown.Item href='#'>Log Out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
-            </Navbar>
-            
+            <ProfilePlaygroundNavbarComponent/>
             <div className='profile'>
                 <div className='cover-container'>
                     <button type="button" className='btn'>Edit Profile <i className="bi bi-pencil"></i></button>
