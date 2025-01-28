@@ -65,9 +65,11 @@
   color: #ddd;
   margin: 5px 0px;
   padding: 5px 50px;
-  border-style: solid;
   border-radius: 50px;
-  border-color: #EC5A2F;
+}
+
+.landing-navbar .sign-up{
+  border: 1px solid #EC5A2F;
 }
 
 .sign-up:hover {

@@ -12,10 +12,9 @@ export const ProfileComponent = () => {
 
     return (
         <>
-            <Navbar expand='lg' fixed='top' className='navbar-profile'>
-                <Button variant='transparent' className='toggle-btn' onClick={handleDashboardClick}>
-                    <a href='#'><i className='bi bi-arrow-left-circle'></i></a>Dashboard
-                </Button>
+            <Navbar expand='lg' className='navbar-profile'>
+                <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
+                <p>Dashboard</p>
 
                 <div className='dashboard-navbar'>
                     <span className='ping'>20 ms</span>

@@ -27,18 +27,26 @@ export const PlaygroundComponent = () => {
 
   return (
     <>
-        <Navbar className='playground-navbar'>
-            <Row>
-                <Col className='home'>
-                    <p><a href="#"><span className="bi bi-arrow-left-circle"></span></a>Home</p>
-                </Col>
-                
-                <Col className='signal'>
-                    <p>20 ms <a href="#"><span className="bi bi-moon" onClick={handleDashboardClick}></span></a></p>
-                </Col>
-            </Row>
-        </Navbar>
+        <Navbar expand='lg' className='navbar-profile'>
+            <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
+            <p>Dashboard</p>
 
+            <div className='dashboard-navbar'>
+                <span className='ping'>20 ms</span>
+                <a href='#'><i className='bi bi-moon'></i></a>
+                <span className='student-badge'>Student</span>
+                <Dropdown align='end'>
+                    <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
+                        <img src='/src/assets/angelica.png' className='profile-image'/>
+                    </Dropdown.Toggle>
+                    
+                    <Dropdown.Menu>
+                    <Dropdown.Item href='#'>Boyet Profile Account</Dropdown.Item>
+                    <Dropdown.Item href='#'>Log Out</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        </Navbar>
         <div className='playground'>
             <div className='playground-container'>
                 <div className='playground-header'>

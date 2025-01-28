@@ -7,24 +7,27 @@
 .navbar-profile {
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
-    background-color: #fde7de;
+    background-color: #fff1ec;
     box-shadow: 0 3px 4px rgba(89, 89, 89, 0.244);
+    font-family: 'Poppins', sans-serif;
 }
 
-.navbar-profile .toggle-btn i{
+.navbar-profile .bi-arrow-left-circle{
     font-size: 20px;
     font-weight: bolder;
     color: #B84C20;
     border: none;
     margin-inline: 10px;
+    padding-left: 20px;
 }
 
-.navbar-profile .toggle-btn{
+.navbar-profile .bi-arrow-left-circle:hover{
+    color: #e4bcac;
+}
+
+.navbar-profile p{
+    margin: auto 0;
     font-size: 17px;
-    color: #B84C20;
-}
-
-.navbar-profile .toggle-btn:hover{
     color: #B84C20;
 }
 
@@ -100,7 +103,6 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding: 20px;
-    margin-top: 60px;
     box-sizing: border-box;
     background-color: rgba(67, 67, 67, 0.5);
     background-blend-mode: multiply;
