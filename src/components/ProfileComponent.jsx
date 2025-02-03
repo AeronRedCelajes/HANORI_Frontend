@@ -1,16 +1,96 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ProfilePlaygroundNavbarComponent } from './ProfilePlaygroundNavbarComponent'
+import {Modal, Button} from 'react-bootstrap'
 import '../style/profile.css'
  
 export const ProfileComponent = () => {
+
+    const [showMain, setShowMain] = useState(false);
+    const [showProfileDetails, setShowProfileDetails] = useState(false);
 
     return (
         <>
             <ProfilePlaygroundNavbarComponent/>
             <div className='profile'>
                 <div className='cover-container'>
-                    <button type="button" className='btn'>Edit Profile <i className="bi bi-pencil"></i></button>
+                    <button type="button" className='btn' onClick={() => setShowMain(true)}>Edit Profile <i className="bi bi-pencil"></i></button>
                 </div>
+
+                <Modal show={showMain} onHide={() => setShowMain(false)} backdrop='static' keyboard={false} size='lg'>
+                    <Modal.Header className='w-100 text-center' closeButton>
+                        <p className='modal-title w-100'>Edit Profile</p>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='edit-button'>
+                            <span>Cover Photo</span>
+                            <Button>
+                                <label htmlFor='file-upload' className='upload-label'>
+                                    Upload Photo
+                                    <input id='file-upload' type='file' accept='image/*' hidden/>
+                                </label>
+                            </Button>
+                        </div>
+                        <div className='edit-info'>
+                            <img src='/src/assets/univ.png'/>
+                        </div>
+                    </Modal.Body>
+
+                    <Modal.Body>
+                        <div className='edit-button'>
+                            <span>Profile Photo</span>
+                            <Button>
+                                <label htmlFor='file-upload' className='upload-label'>
+                                    Upload Photo
+                                    <input id='file-upload' type='file' accept='image/*' hidden/>
+                                </label>
+                            </Button>
+                        </div>
+                        <div className='edit-info'>
+                            <img src='/src/assets/angelica.png'/>
+                        </div>
+                    </Modal.Body>
+
+                    <Modal.Body>
+                        <div className='edit-button'>
+                            <span>Profile Details</span>
+                            <Button onClick={() => setShowProfileDetails(true)}>Edit</Button>
+                        </div>
+                        <div className='edit-info'>
+                            <p>Angelica Mae Manliguez</p>
+                            <p>Student # 21-14329-587</p>
+                            <p>BS Computer Science</p>
+                            <p>4th Year</p>
+                            <p>4-BSCS-1</p>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+
+                <Modal show={showProfileDetails} onHide={() => setShowProfileDetails(false)} backdrop='static' keyboard={false} size='lg' className='custom-modal-edit'>
+                    <Modal.Header className='w-100 text-center' closeButton>
+                        <p className='modal-title w-100'>Edit your details</p>
+                    </Modal.Header>
+
+                    <Modal.Body className='body-details'>
+                        <label>Name: </label>
+                        <input type='text' placeholder='Ex. Angelica Mae Manliguez' className='form-control'/>
+                        
+                        <label>Student #: </label>
+                        <input type='text' placeholder='Ex. 21-14329-582' className='form-control'/>
+                    
+                        <label>Course: </label>
+                        <input type='text' placeholder='Ex. BS Computer Science' className='form-control'/>
+
+                        <label>Year Level: </label>
+                        <input type='text' placeholder='Ex. 4th Year' className='form-control'/>
+
+                        <label>Section: </label>
+                        <input type='text' placeholder='Ex. 4-BSCS-1' className='form-control'/>
+                    </Modal.Body>
+
+                    <Modal.Footer className='custom-modal-footer'>
+                        <Button>Save Changes</Button>
+                    </Modal.Footer>
+                </Modal>
 
                 <div className='profile-container'>
                     <div className='row'>
@@ -49,40 +129,6 @@ export const ProfileComponent = () => {
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                         <h6>Weaknesses</h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-                                <div className='history-content'>
-                                    <p className='title'>History</p>
-                                    <span className='border border-dark'></span>
-
-                                    <div className='history-table'>
-                                        <div class="table-responsive">
-                                            <table class="table table-sm table-hover">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Subject</th>
-                                                <th scope="col">Assessment</th>
-                                                <th scope="col">Scores</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                <th scope="row">1</th>
-                                                <td>Java Prog</td>
-                                                <td>If-Else</td>
-                                                <td>95</td>
-                                                </tr>
-                                                <tr>
-                                                <th scope="row">2</th>
-                                                <td>Python</td>
-                                                <td>Basic Python</td>
-                                                <td>97</td>
-                                                </tr>
-                                            </tbody>
-                                            </table>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

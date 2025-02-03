@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Dropdown, Nav, Card, Button } from 'react-bootstrap';
+import { Navbar, Dropdown, Nav, Card, Button, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
 import '../style/dashboard.css'
@@ -23,12 +23,19 @@ export const DashboardComponent = () => {
         navigate_home('/home')
     }
 
+    const navigate_class = useNavigate();
+    const handleClassClick = () =>{
+        navigate_class('/class')
+    }
+
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
 
     const [activeItem, setActiveItem] = useState('my-classes');
+
+    const [showJoinClass, setShowJoinClass] = useState(false);
 
     return (
         <>
@@ -82,18 +89,25 @@ export const DashboardComponent = () => {
                                 <Card.Img variant='top' src='/src/assets/univ.png'/>
                                 <Card.Body>
                                     <Card.Text>
-                                        Class name <br/> Instructor's name
+                                        <a href='#' onClick={handleClassClick}>Class name <br/> Instructor's name</a>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
 
-                            <Button variant='transparent' className='join-class'>
+                            <Button variant='transparent' className='join-class' onClick={() => setShowJoinClass(true)}>
                                 + Join a Class
                             </Button>
+
+                            <Modal show={showJoinClass} onHide={() => setShowJoinClass(false)} backdrop='static' keyboard={false} size='lg'>
+                                <Modal.Header closeButton>Join Class</Modal.Header>
+                                <Modal.Body className='modal-class-body'>
+                                    <p>Enter the class code given to you by your teacher.</p>
+                                    <input type='text' placeholder='ex. 123456' className='form-control'/>
+                                    <Button>Join Class</Button>
+                                </Modal.Body>
+                            </Modal>
                         </div>
-                        
                     </div>
-                    
                 </div>
             </div>
         </>

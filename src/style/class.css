@@ -1,0 +1,17 @@
+.navbar-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+    font-family: 'Poppins';
+}
+
+.navbar-center button{
+    padding-top: 20px;
+    margin-left: 30px;
+    background-color: transparent;
+    color: #B84C20;
+    font-weight: bold;
+    border: none;
+}

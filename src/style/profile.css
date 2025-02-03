@@ -40,6 +40,90 @@
     padding-left: 5px;
 }
 
+.modal{
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-header{
+    font-size: larger;
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #C79E8E;
+}
+
+.modal-body{
+    color: #2C292A;
+    background-color: #fdf8f6;
+}
+
+.edit-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.edit-button button{
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    color: rgb(209, 102, 48);
+    cursor: pointer;
+}
+
+.upload-label{
+    cursor: pointer;
+}
+
+.edit-button button:hover{
+    background-color: transparent;
+    color: rgb(220, 141, 102);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.edit-info img{
+    width: 50%;
+    height: auto;
+}
+
+.edit-info p{
+    margin: 0;
+    color: #454445;
+}
+
+.custom-modal-edit .modal-dialog{
+    height: 100vh;
+}
+
+.custom-modal-edit .modal-content{
+    height: 100%;
+}
+
+.body-details label{
+    margin-top: 20px;
+}
+
+.custom-modal-edit .custom-modal-footer{
+    background-color: #C79E8E;
+    
+}
+
+.custom-modal-edit .custom-modal-footer button{
+    background-color: #ff7918;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding-inline: 20px;
+}
+
 .profile-picture-container {
     background-color: rgb(45, 45, 45);
     background-image: url('/src/assets/angelica.png');
@@ -91,6 +175,7 @@
     border-radius: 10px;
     display: block;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 20px;
 }
 
 .performance-content .title{

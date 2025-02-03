@@ -13,7 +13,7 @@ export const FeaturesComponent = () => {
                 <div className="main-feature-img"><img src="/src/assets/clock.png" alt="" /></div>
                 <h3>Real-Time Code Assessment</h3>
                 <p>
-                Instantly evaluates student code submissions, providing immediate feedback and scoring to enhance learning efficiency.
+                    Instantly evaluates student code submissions, providing immediate feedback and scoring to enhance learning efficiency.
                 </p>
             </div>
 
@@ -21,7 +21,7 @@ export const FeaturesComponent = () => {
                 <div className="main-feature-img"><img src="/src/assets/code.png" alt="" /></div>
                 <h3>Code Challenges</h3>
                 <p>
-                Enables educators to design and customize coding challenges from scratch, allowing full control over content and difficulty.
+                    Enables educators to design and customize coding challenges from scratch, allowing full control over content and difficulty.
                 </p>
             </div>
 
@@ -29,7 +29,7 @@ export const FeaturesComponent = () => {
                 <div className="main-feature-img"><img src="/src/assets/rocket.png" alt="" /></div>
                 <h3>Comprehensive Performance Tracking</h3>
                 <p>
-                Tracks student progress over time, with in-depth reports and analytics for both students and instructors.
+                    Tracks student progress over time, with in-depth reports and analytics for both students and instructors.
                 </p>
             </div>
         </div>

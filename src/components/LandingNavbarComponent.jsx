@@ -5,10 +5,14 @@ import '../style/navbar.css';
 export const LandingNavbarComponent = () => {
 
   const navigate_signin = useNavigate();
-
   const handleSignInClick = () => {
     navigate_signin('/signin');
   };
+
+  const navigate_signup = useNavigate();
+  const handleSignUpClick = () => {
+    navigate_signup('/signup');
+  }
 
   return (
     <>
@@ -21,7 +25,7 @@ export const LandingNavbarComponent = () => {
               <button className="sign-in" onClick={handleSignInClick}>
                   Sign In
               </button>
-              <button className="sign-up">
+              <button className="sign-up" onClick={handleSignUpClick}>
                   Sign Up
               </button>
               </div>

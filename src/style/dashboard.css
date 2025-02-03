@@ -8,7 +8,7 @@
 
 .sidebar {
     width: 0;
-    background-color: #FFF5F1;
+    background-color: #fffaf8;
     border-right: 1px solid #ddd;
     position: fixed;
     top: 0;
@@ -67,7 +67,7 @@
 .navbar-top {
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
-    background-color: #fde7de;
+    background-color: #FFF5F1;
     box-shadow: 0 3px 4px rgba(89, 89, 89, 0.244);
 }
 
@@ -192,6 +192,15 @@
     padding-left: 10px;
 }
 
+.class-card .card-text a{
+    text-decoration: none;
+    color: #B84C20;
+}
+
+.class-card .card-text a:hover{
+    color: #b84b20bc;
+}
+
 .class-card .card-body{
     background-color: #CCCFDA;
 }
@@ -212,3 +221,32 @@
     color: #72747d;
 }
 
+.modal-class-body{
+    color: #B84C20;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-class-body p{
+    margin-top: 30px;
+}
+
+.modal-class-body input{
+    width: 70%;
+}
+
+.modal-class-body button{
+    margin-block: 30px;
+    font-weight: 600;
+    background-color: #84C776;
+    border: none;
+    border-radius: 20px;
+    padding-inline: 30px;
+}
+
+.modal-class-body button:hover{
+    background-color: #83c77692;
+}

@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Navbar, Container, Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
+import { Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
 import {ProfilePlaygroundNavbarComponent} from './ProfilePlaygroundNavbarComponent'
 import '../style/playground.css'
 
 export const PlaygroundComponent = () => {
-
-    const navigate_dashboard = useNavigate();
-
-    const handleDashboardClick = () => {
-        navigate_dashboard('/dashboard');
-    };
 
     //dropdown
     const [selectedLanguage, setSelectedLanguage] = useState({ name: 'Java', imgSrc: '/src/assets/java2.png' });
@@ -39,7 +32,7 @@ export const PlaygroundComponent = () => {
                                 <Tab eventKey="main" title="main.py"></Tab>
                                 <Tab eventKey="code.java" title="code.java"></Tab>
                             </Tabs>
-                            <a href='#'><span className='bi bi-plus-square-fill'></span></a>
+                            {/*<a href='#'><span className='bi bi-plus-square-fill'></span></a>*/}
                         </Col>
 
                         <Col sm={1} className='right-corner'>
