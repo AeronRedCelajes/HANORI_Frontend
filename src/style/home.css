@@ -6,11 +6,13 @@ body::-webkit-scrollbar {
   position: fixed;
   z-index: 2000;
   width: 100%;
+  overflow: visible;
 }
 
 .header-orange-border {
   background: #EB5A2B;
   clip-path: polygon(0 0, 100% 0, 100% 77%, 0 97%);
+  overflow: visible;
 }
 
 .header-section {
@@ -20,6 +22,7 @@ body::-webkit-scrollbar {
   padding: 0px 0px 90px 70px;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 95%);
   position: relative;
+  overflow: visible;
 }
 
 .features-section {
