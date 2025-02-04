@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Dropdown, Nav, Tabs, Button, Tab } from 'react-bootstrap';
+import { Navbar, Dropdown, Row, Tabs, Col, Tab } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
 import '/src/style/student/class.css'
@@ -61,8 +61,16 @@ export const ClassManagementComponent = () => {
                     <Tab eventKey="ongoing" title="Ongoing"></Tab>
                     <Tab eventKey="completed" title="Completed"></Tab>
                 </Tabs>
-                <div >
+                <div className='activities'>
+                    <Row>
+                        <Col>
+                            <h5>Activity Name</h5>
+                        </Col>
 
+                        <Col>
+                            
+                        </Col>
+                    </Row>
                 </div>
             </div>
         </>

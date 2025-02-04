@@ -34,8 +34,7 @@ export const DashboardComponent = () => {
 
     const [activeItem, setActiveItem] = useState('my-classes');
 
-    const handleCreateClass = () => setShowCreateClass(true);
-    const handleCloseCreateClass = () => setShowCreateClass(false);
+    const [showCreateClass, setShowCreateClass] = useState(false);
 
     return (
         <div className='dashboard'>
@@ -56,27 +55,27 @@ export const DashboardComponent = () => {
             </div>
 
             <div className='dashboard-content'>
-            <Navbar expand='lg' fixed='top' className='navbar-top'>
-                        <Button variant='transparent' className='toggle-btn' onClick={toggleSidebar}>
-                            <FontAwesomeIcon icon={faBars} />
-                        </Button>
+                <Navbar expand='lg' fixed='top' className='navbar-top'>
+                    <Button variant='transparent' className='toggle-btn' onClick={toggleSidebar}>
+                        <FontAwesomeIcon icon={faBars} />
+                    </Button>
 
-                        <div className='dashboard-navbar'>
-                            <span className='ping'>20 ms</span>
-                            <a href='#'><i className='bi bi-moon'></i></a>
-                            <span className='student-badge'>Student</span>
-                            <Dropdown align='end'>
-                                <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
-                                    <img src='/src/assets/angelica.png' className='profile-image'/>
-                                </Dropdown.Toggle>
-                                
-                                <Dropdown.Menu>
-                                <Dropdown.Item href='#' onClick={handleProfileClick}>Boyet Profile Account</Dropdown.Item>
-                                <Dropdown.Item href='#' onClick={handleHomeClick}>Log Out</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div>
-                    </Navbar>
+                    <div className='dashboard-navbar'>
+                        <span className='ping'>20 ms</span>
+                        <a href='#'><i className='bi bi-moon'></i></a>
+                        <span className='student-badge'>Student</span>
+                        <Dropdown align='end'>
+                            <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
+                                <img src='/src/assets/angelica.png' className='profile-image'/>
+                            </Dropdown.Toggle>
+                            
+                            <Dropdown.Menu>
+                            <Dropdown.Item href='#' onClick={handleProfileClick}>Boyet Profile Account</Dropdown.Item>
+                            <Dropdown.Item href='#' onClick={handleHomeClick}>Log Out</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                </Navbar>
 
                 <div className='container dashboard-body'>
                     <h5>Active Classes</h5>
@@ -89,13 +88,13 @@ export const DashboardComponent = () => {
                             </Card.Body>
                         </Card>
 
-                        <Button variant='transparent' className='create-class' onClick={handleCreateClass}>
-                            + Create Class
+                        <Button variant='transparent' className='join-class' onClick={() => setShowCreateClass(true)}>
+                            + Create a Class
                         </Button>
                     </div>
                 </div>
 
-                <Modal show={showCreateClass} onHide={handleCloseCreateClass} backdrop='static' keyboard={false} size='md'>
+                <Modal show={showCreateClass} onHide={() => setShowCreateClass(false)} backdrop='static' keyboard={false} size='lg'>
                     <Modal.Header closeButton>
                         <Modal.Title>Class Creation</Modal.Title>
                     </Modal.Header>
@@ -103,12 +102,12 @@ export const DashboardComponent = () => {
                         <Form>
                             <Form.Group controlId='formClassName'>
                                 <Form.Label>Class Name</Form.Label>
-                                <Form.Control type='text' placeholder='Enter class name' value={className} onChange={(e) => setClassName(e.target.value)} />
+                                <Form.Control type='text' placeholder='Enter class name' onChange={(e) => setClassName(e.target.value)} />
                             </Form.Group>
 
                             <Form.Group controlId='formSection'>
                                 <Form.Label>Section</Form.Label>
-                                <Form.Control as='select' value={section} onChange={(e) => setSection(e.target.value)}>
+                                <Form.Control as='select' onChange={(e) => setSection(e.target.value)}>
                                     <option value=''>Select section</option>
                                     <option value='1BSCS-1'>1BSCS-1</option>
                                     <option value='1BSCS-2'>1BSCS-2</option>
@@ -118,7 +117,7 @@ export const DashboardComponent = () => {
                                 </Form.Control>
                             </Form.Group>
 
-                            <Button variant='primary' className='mt-3' onClick={handleCloseCreateClass}>
+                            <Button variant='primary' className='mt-3'>
                                 Create Class
                             </Button>
                         </Form>

@@ -16,15 +16,20 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<HomeComponents/>} />
+          <Route path='/home' element={<HomeComponents/>}/>
           <Route path='/signin' element={<SignInComponent/>} />
           <Route path='/signup' element={<SignUpComponent/>} />
-          <Route path='/login' element={<DashboardComponent/>}/>
-          <Route path='/sandbox' element={<PlaygroundComponent/>}/>
+
+          {/* STUDENT */}
+          {/* <Route path='/login' element={<DashboardComponent/>}/> */}
+          {/* <Route path='/sandbox' element={<PlaygroundComponent/>}/> */}
           {/* <Route path='/dashboard' element={<DashboardComponent/>}/>  */}
+          {/* <Route path='/profile' element={<ProfileComponent/>}/> */}
+          {/* <Route path='/class' element={<ClassManagementComponent/>}/> */}
+
+          {/* TEACHER */}
+          <Route path='/login' element={<TeacherDashboard/>}/>
           <Route path='/dashboard' element={<TeacherDashboard/>}/>
-          <Route path='/profile' element={<ProfileComponent/>}/>
-          <Route path='/home' element={<HomeComponents/>}/>
-          <Route path='/class' element={<ClassManagementComponent/>}/>
         </Routes>
     </Router>
     </>
