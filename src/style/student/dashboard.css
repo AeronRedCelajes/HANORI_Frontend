@@ -147,7 +147,7 @@
     justify-content: start;
     flex-direction: column;
     margin-top: 20px;
-    margin-left: 120px;
+    margin-left: 150px;
     padding: 30px;
     transition: margin-left 0.3s ease;
 }

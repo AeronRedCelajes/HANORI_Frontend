@@ -1,60 +1,42 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Dropdown, Nav, Card, Button, Modal } from 'react-bootstrap';
+import { Navbar, Dropdown, Nav, Tabs, Button, Tab } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
 import '/src/style/student/class.css'
 
 export const ClassManagementComponent = () => {
 
-    const navigate_sandbox = useNavigate();
-    const handleSandboxClick = () => {
-        navigate_sandbox('/sandbox');
+    const navigate_dashboard = useNavigate();
+    const handleDashboardClick = () => {
+        navigate_dashboard('/dashboard');
     };
 
     const navigate_profile = useNavigate();
-    const handleProfileClick = () => {
-        navigate_profile('/profile');
-    };
+    const handleProfileClick = () =>{
+        navigate_profile('/profile')
+    }
 
     const navigate_home = useNavigate();
     const handleHomeClick = () =>{
         navigate_home('/home')
     }
-
-    const [sidebarOpen, setSidebarOpen] = useState(true);
-        const toggleSidebar = () => {
-            setSidebarOpen(!sidebarOpen);
-        };
     
-        const [activeItem, setActiveItem] = useState('my-classes');
+    const [navkey, setNavKey] = useState('activities');
+    const [contentkey, setContentKey] = useState('onging');
+
     return (
         <>
-            <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-                <Nav className='flex-column sidebar-content'>
-                    <Nav.Item className={`nav-item ${activeItem === 'my-classes' ? 'active' : ''}`} onClick={() => setActiveItem('my-classes')}>
-                        <Nav.Link href='#' className='nav-link'>
-                            <FontAwesomeIcon icon={faDesktop} className='sidebar-icon'/> My Classes
-                        </Nav.Link>
-                    </Nav.Item>
-
-                    <Nav.Item className='nav-item' onClick={handleSandboxClick}>
-                        <Nav.Link href='#' className='nav-link' >
-                            <FontAwesomeIcon icon={faLaptopCode} className='sidebar-icon'/> Sandbox
-                        </Nav.Link>
-                    </Nav.Item>
-                </Nav>
-            </div>
-
-            <Navbar expand='lg' fixed='top' className='navbar-top'>
-                <Button variant='transparent' className='toggle-btn' onClick={toggleSidebar}>
-                    <FontAwesomeIcon icon={faBars} />
-                </Button>
+            <Navbar expand='lg' fixed='top' className='class-navbar-top'>
+                <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
+                <p>Dashboard</p>
 
                 <div className='navbar-center'>
-                    <button>Activities</button>
-                    <Button>Bulletin</Button>
+                    <Tabs defaultActiveKey={navkey} id="tab" onSelect={(k) => setNavKey(k)} fill>
+                        <Tab eventKey="activities" title="Activities"></Tab>
+                        <Tab eventKey="bulletin" title="Bulletin"></Tab>
+                    </Tabs>
                 </div>
 
                 <div className='dashboard-navbar'>
@@ -74,8 +56,15 @@ export const ClassManagementComponent = () => {
                 </div>
             </Navbar>
 
-            <button>ange</button>
-            <Button>hana</Button>
+            <div className='container class-content'>
+                <Tabs defaultActiveKey={contentkey} id="tab" onSelect={(k) => setContentKey(k)} fill>
+                    <Tab eventKey="ongoing" title="Ongoing"></Tab>
+                    <Tab eventKey="completed" title="Completed"></Tab>
+                </Tabs>
+                <div >
+
+                </div>
+            </div>
         </>
   )
 }
