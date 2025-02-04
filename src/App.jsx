@@ -6,6 +6,7 @@ import { PlaygroundComponent } from './components/student/PlaygroundComponent'
 import { DashboardComponent } from './components/student/DashboardComponent'
 import { SignUpComponent } from './components/SignUpComponent'
 import { ClassManagementComponent } from './components/student/ClassManagementComponent';
+import { DashboardComponent as TeacherDashboard } from './components/teacher/DashboardComponent';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
           <Route path='/signup' element={<SignUpComponent/>} />
           <Route path='/login' element={<DashboardComponent/>}/>
           <Route path='/sandbox' element={<PlaygroundComponent/>}/>
-          <Route path='/dashboard' element={<DashboardComponent/>}/>
+          {/* <Route path='/dashboard' element={<DashboardComponent/>}/>  */}
+          <Route path='/dashboard' element={<TeacherDashboard/>}/>
           <Route path='/profile' element={<ProfileComponent/>}/>
           <Route path='/home' element={<HomeComponents/>}/>
           <Route path='/class' element={<ClassManagementComponent/>}/>
