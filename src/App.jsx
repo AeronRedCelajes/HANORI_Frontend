@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { SignInComponent } from "./components/SignInComponent"
 import { HomeComponents } from "./components/HomeComponent"
-import { ProfileComponent } from "./components/ProfileComponent"
-import { PlaygroundComponent } from "./components/PlaygroundComponent"
-import { DashboardComponent } from './components/DashboardComponent'
-import { ClassManagementComponent } from './components/ClassManagementComponent'
+import { ProfileComponent } from './components/student/ProfileComponent'
+import { PlaygroundComponent } from './components/student/PlaygroundComponent'
+import { DashboardComponent } from './components/student/DashboardComponent'
 import { SignUpComponent } from './components/SignUpComponent'
+import { ClassManagementComponent } from './components/student/ClassManagementComponent';
+
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { ProfilePlaygroundNavbarComponent } from './ProfilePlaygroundNavbarComponent'
+import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent'
 import {Modal, Button} from 'react-bootstrap'
-import '../style/profile.css'
+import '/src/style/student/profile.css'
  
 export const ProfileComponent = () => {
 

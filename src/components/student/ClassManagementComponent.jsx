@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, Dropdown, Nav, Card, Button, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
-import '../style/class.css'
+import '/src/style/student/class.css'
 
 export const ClassManagementComponent = () => {
 

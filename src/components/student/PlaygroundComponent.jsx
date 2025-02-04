@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
-import {ProfilePlaygroundNavbarComponent} from './ProfilePlaygroundNavbarComponent'
-import '../style/playground.css'
+import {ProfilePlaygroundNavbarComponent} from '../ProfilePlaygroundNavbarComponent'
+import '/src/style/student/playground.css'
 
 export const PlaygroundComponent = () => {
 

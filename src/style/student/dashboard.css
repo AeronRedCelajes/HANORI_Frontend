@@ -65,7 +65,7 @@
 }
 
 .navbar-top {
-    padding: 10px 20px;
+    padding: 8px 0;
     border-bottom: 1px solid #ddd;
     background-color: #FFF5F1;
     box-shadow: 0 3px 4px rgba(89, 89, 89, 0.244);
@@ -147,7 +147,7 @@
     justify-content: start;
     flex-direction: column;
     margin-top: 20px;
-    margin-left: 200px;
+    margin-left: 120px;
     padding: 30px;
     transition: margin-left 0.3s ease;
 }
@@ -222,7 +222,6 @@
 }
 
 .modal-class-body{
-    color: #B84C20;
     font-size: large;
     font-weight: bold;
     display: flex;
@@ -232,6 +231,7 @@
 
 .modal-class-body p{
     margin-top: 30px;
+    color: #B84C20;
 }
 
 .modal-class-body input{

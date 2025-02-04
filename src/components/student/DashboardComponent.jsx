@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, Dropdown, Nav, Card, Button, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
-import '../style/dashboard.css'
+import '/src/style/student/dashboard.css'
 
 export const DashboardComponent = () => {
 
