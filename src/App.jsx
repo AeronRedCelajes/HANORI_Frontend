@@ -6,8 +6,9 @@ import { PlaygroundComponent } from './components/student/PlaygroundComponent'
 import { DashboardComponent } from './components/student/DashboardComponent'
 import { SignUpComponent } from './components/SignUpComponent'
 import { ClassManagementComponent } from './components/student/ClassManagementComponent';
-import { DashboardComponent as TeacherDashboard } from './components/teacher/DashboardComponent';
+import { CodingAssessmentComponent } from './components/student/CodingAssessmentComponent'
 
+import { DashboardComponent as TeacherDashboard } from './components/teacher/DashboardComponent';
 
 function App() {
 
@@ -21,15 +22,16 @@ function App() {
           <Route path='/signup' element={<SignUpComponent/>} />
 
           {/* STUDENT */}
-          {/* <Route path='/login' element={<DashboardComponent/>}/> */}
-          {/* <Route path='/sandbox' element={<PlaygroundComponent/>}/> */}
-          {/* <Route path='/dashboard' element={<DashboardComponent/>}/>  */}
-          {/* <Route path='/profile' element={<ProfileComponent/>}/> */}
-          {/* <Route path='/class' element={<ClassManagementComponent/>}/> */}
+          <Route path='/login' element={<DashboardComponent/>}/>
+          <Route path='/sandbox' element={<PlaygroundComponent/>}/>
+          <Route path='/dashboard' element={<DashboardComponent/>}/>
+          <Route path='/profile' element={<ProfileComponent/>}/>
+          <Route path='/class' element={<ClassManagementComponent/>}/>
+          <Route path='/assessment' element={<CodingAssessmentComponent/>}/>
 
-          {/* TEACHER */}
+          {/* TEACHER
           <Route path='/login' element={<TeacherDashboard/>}/>
-          <Route path='/dashboard' element={<TeacherDashboard/>}/>
+          <Route path='/dashboard' element={<TeacherDashboard/>}/> */}
         </Routes>
     </Router>
     </>

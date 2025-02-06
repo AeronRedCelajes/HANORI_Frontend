@@ -16,7 +16,7 @@ export const ProfileComponent = () => {
                     <button type="button" className='btn' onClick={() => setShowMain(true)}>Edit Profile <i className="bi bi-pencil"></i></button>
                 </div>
 
-                <Modal show={showMain} onHide={() => setShowMain(false)} backdrop='static' keyboard={false} size='lg'>
+                <Modal show={showMain} onHide={() => setShowMain(false)} backdrop='static' keyboard={false} size='lg' className='modal-profile'>
                     <Modal.Header className='w-100 text-center' closeButton>
                         <p className='modal-title w-100'>Edit Profile</p>
                     </Modal.Header>

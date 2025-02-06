@@ -44,14 +44,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.modal-header{
+.modal-profile .modal-header{
     font-size: larger;
     color: #ffffff;
     font-weight: bolder;
     background-color: #C79E8E;
 }
 
-.modal-body{
+.modal-profile .modal-body{
     color: #2C292A;
     background-color: #fdf8f6;
 }
