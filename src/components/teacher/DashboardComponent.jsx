@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Navbar, Dropdown, Nav, Card, Button, Modal, Form } from 'react-bootstrap';
+import { faBars, faDesktop, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptopCode, faDesktop, faBars } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import { Button, Card, Dropdown, Form, Modal, Nav, Navbar } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '/src/style/teacher/dashboard.css';
 
 export const DashboardComponent = () => {
