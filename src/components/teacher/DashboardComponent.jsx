@@ -24,7 +24,7 @@ export const DashboardComponent = () => {
 
     const navigate_class = useNavigate();
     const handleClassClick = () =>{
-        navigate_class('/class')
+        navigate_class('/activities')
     }
 
     const [sidebarOpen, setSidebarOpen] = useState(true);

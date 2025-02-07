@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown, Navbar, Tab, Tabs } from "react-bootstrap";
-import "react-datepicker/dist/react-datepicker.css";
 import "../../style/teacher/activitySettings.css";
 import AMNavigationBarComponent from './AMNavigationBarComponent';
 
