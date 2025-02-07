@@ -63,14 +63,14 @@ export const DashboardComponent = () => {
                     <div className='dashboard-navbar'>
                         <span className='ping'>20 ms</span>
                         <a href='#'><i className='bi bi-moon'></i></a>
-                        <span className='student-badge'>Student</span>
+                        <span className='student-badge'>Teacher</span>
                         <Dropdown align='end'>
                             <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
                                 <img src='/src/assets/angelica.png' className='profile-image'/>
                             </Dropdown.Toggle>
                             
                             <Dropdown.Menu>
-                            <Dropdown.Item href='#' onClick={handleProfileClick}>Boyet Profile Account</Dropdown.Item>
+                            <Dropdown.Item href='#' onClick={handleProfileClick}>Profile Account</Dropdown.Item>
                             <Dropdown.Item href='#' onClick={handleHomeClick}>Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -88,7 +88,7 @@ export const DashboardComponent = () => {
                             </Card.Body>
                         </Card>
 
-                        <Button variant='transparent' className='join-class' onClick={() => setShowCreateClass(true)}>
+                        <Button variant='transparent' className='create-class' onClick={() => setShowCreateClass(true)}>
                             + Create a Class
                         </Button>
                     </div>

@@ -36,7 +36,7 @@ export const ClassManagementComponent = () => {
     return (
         <>
             <Navbar expand='lg' className='class-navbar-top'>
-                <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
+                <i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i>
                 <p>Dashboard</p>
 
                 <div className='navbar-center'>

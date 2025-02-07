@@ -1,12 +1,12 @@
-.navbar-profile {
-    padding: 10px 20px;
+.profile-playground-navbar {
+    background-color: #681e1e;
     border-bottom: 1px solid #ddd;
-    background-color: #FFF5F1;
     box-shadow: 0 3px 4px rgba(89, 89, 89, 0.244);
     font-family: 'Poppins', sans-serif;
+    height: 60px;
 }
 
-.navbar-profile .bi-arrow-left-circle{
+.profile-playground-navbar .bi-arrow-left-circle{
     font-size: 20px;
     font-weight: bolder;
     color: #B84C20;
@@ -15,11 +15,11 @@
     padding-left: 20px;
 }
 
-.navbar-profile .bi-arrow-left-circle:hover{
+.profile-playground-navbar .bi-arrow-left-circle:hover{
     color: #e4bcac;
 }
 
-.navbar-profile p{
+.profile-playground-navbar p{
     margin: auto 0;
     font-size: 17px;
     color: #B84C20;
@@ -36,50 +36,4 @@
 .ping {
     color: #B84C20;
     font-size: smaller;
-}
-
-.dashboard-navbar .bi{
-    color: #B84C20;
-}
-
-.student-badge {
-    background-color: #84C776;
-    color: #FFF5F1;
-    padding: 7px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
-.dashboard-navbar .dropdown-toggle{
-    border: none;
-    font-size: 1px;
-}
-
-.profile-dropdown {
-    display: flex;
-    align-items: center;
-    border: none;
-}
-
-.profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit:fill;
-}
-
-.dashboard-navbar .dropdown-item {
-    color: #C4907B;
-    font-size: smaller;
-}
-  
-.dashboard-navbar .dropdown-item:hover {
-    background-color: #F5DAD0;
-    color: #B84C20;
-    border-left: 5px solid #B84C20;
-}
-
-.dashboard-navbar .dropdown-menu {
-    background-color: #FFF5F1;
-    width: 180px;
 }

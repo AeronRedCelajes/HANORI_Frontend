@@ -1,7 +1,9 @@
 .profile{
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #CCCFDA;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    min-height: fit-content;
 }
 
 .cover-container{
@@ -161,7 +163,7 @@
 }
 
 .details{
-    margin-bottom: -20px;
+    margin-bottom: 20px;
 }
 
 .details p{

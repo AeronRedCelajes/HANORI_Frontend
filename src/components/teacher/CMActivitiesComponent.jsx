@@ -7,37 +7,18 @@ import "../../style/teacher/cmActivities.css"; // Updated CSS file
 
 export const CMActivitiesComponent = () => {
 
-    const navigate_dashboard = useNavigate();
-    const handleDashboardClick = () => {
-        navigate_dashboard('/dashboard');
-    };
-
-    const navigate_profile = useNavigate();
-    const handleProfileClick = () =>{
-        navigate_profile('/profile')
+    const navigate_leaderboard = useNavigate();
+    const handleLeaderboardClick = () =>{
+        navigate_leaderboard('/leaderboard')
     }
-
-    const navigate_home = useNavigate();
-    const handleHomeClick = () =>{
-        navigate_home('/home')
-    }
-
-    const navigate_codingAssessment = useNavigate();
-    const handleCodingAssessmentClick = () =>{
-        navigate_codingAssessment('/assessment')
-    }
-    
-    const [navkey, setNavKey] = useState('activities');
 
     const [contentKey, setContentKey] = useState('ongoing');
 
     const [showOngoingActivityDetails, setShowOngoingActivityDetails] = useState(false);
-    const [showCompletedActivityDetails, setShowCompletedActivityDetails] = useState(false);
 
     return (
         <>
         <CMNavigationBarComponent/>
-
         <div className="create-new-activity-wrapper"></div> 
         <div className="create-new-activity-container">
         <button 
@@ -84,7 +65,7 @@ export const CMActivitiesComponent = () => {
                                                 </div>
 
                                                 <div>
-                                                    <Button onClick={handleCodingAssessmentClick}>Start</Button>
+                                                    <Button onClick={handleLeaderboardClick}>View</Button>
                                                 </div>
                                             </Modal.Footer>
                                         </Modal>

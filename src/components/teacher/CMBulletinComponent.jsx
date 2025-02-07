@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-import '/src/style/student/bulletin.css'
-import { Button, Row, Col, Card, Modal } from 'react-bootstrap';
+import '/src/style/teacher/cmBulletin.css'
+import { Button, Row, Col, Card, Modal, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBold, faItalic, faUnderline, faSuperscript, faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-solid-svg-icons';
 import CMNavigationBarComponent from './CMNavigationBarComponent';
 
 export const CMBulletinComponent = () => {
@@ -18,18 +20,44 @@ export const CMBulletinComponent = () => {
       { id: 3, name: 'Erikka Enaje', dateCreated: '19 December 2025', timeCreated: '9:30am', message: 'ma anong ulam' }
   ]);
 
-  const [showPostConcern, setShowPostConcern] = useState(false);
+  const [showResponse, setShowResponse] = useState(false);
+  const [showPostAnnouncement, setShowPostAnnouncement] = useState(false);
 
   return (
     <>
     <CMNavigationBarComponent/>
       <div className='bulletin-content'>
-        <div className='container-fluid bulletin-header'>
-          <div className='bulletin-search'>
-            <input type="text" placeholder="Search your professor’s name, the title of the post, or subject..." />
-            <i className='bi bi-search'></i>       
-          </div>
-        </div>    
+        <div className="create-new-activity-wrapper"></div> 
+        <div className="create-new-activity-container">
+          <button className="create-new-activity-button"  onClick={() => setShowPostAnnouncement(true)}>
+              + Create New Post
+          </button>
+
+          <Modal className='modal-post-announcement' show={showPostAnnouncement} onHide={() => setShowPostAnnouncement(false)} backdrop='static' keyboard={false} size='md'>
+            <Modal.Header closeButton><h3>Create a Post</h3></Modal.Header>
+            <Modal.Body>
+              <Form className='create-activity-form'>
+                <Form.Control className='create-activity-title' type='text' placeholder='Title...'/>
+
+                <div className='description-section'>
+                  <div className='description-toolbar'>
+                      <FontAwesomeIcon icon={faBold} />
+                      <FontAwesomeIcon icon={faItalic} />
+                      <FontAwesomeIcon icon={faUnderline} />
+                      <FontAwesomeIcon icon={faSuperscript} />
+                      <FontAwesomeIcon icon={faAlignLeft} />
+                      <FontAwesomeIcon icon={faAlignCenter} />
+                      <FontAwesomeIcon icon={faAlignRight} />
+                  </div>
+                <Form.Control as='textarea' placeholder='Description...'/>
+              </div>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => setShowPostAnnouncement(false)}>Post</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
         
         <Row>
           <Col></Col>
@@ -59,25 +87,8 @@ export const CMBulletinComponent = () => {
           <Col xs={3}>
               <div className='concern'>
                 <div className='concern-header'>
-                  <h5>Your Concerns</h5>
+                  <h5>Student Concerns</h5>
                 </div>
-
-                <Button onClick={() => setShowPostConcern(true)}>Send a concern</Button>
-
-                <Modal className='post-concern' show={showPostConcern} onHide={() => setShowPostConcern(false)} backdrop='static' keyboar={false} size='md'>
-                  <Modal.Header closeButton>
-                      <div className='modal-activity-header'>
-                          <h3>Post Your Concern</h3>
-                          <p>To professor, Esperanza Jerry</p>
-                      </div>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <textarea className='post-concern-textarea'></textarea>
-                  </Modal.Body>
-                  <Modal.Footer>
-                          <Button onClick={() => setShowPostConcern(false)}>Post Concern</Button>
-                  </Modal.Footer>
-                </Modal>
 
                 <div className='concern-body'>
                   {concerns.map((concern) =>
@@ -88,18 +99,30 @@ export const CMBulletinComponent = () => {
 
                       <div className='concern-actions'>
                         <p>Pending</p>
-                        <p>Archive<i className='bi bi-archive-fill'/></p>
+                        <p>Reply<i className='bi bi-reply-fill' onClick={() => setShowPostConcern(true)}/></p>
                       </div>
                     </div>
                   )}
+                  
+                  <Modal className='post-concern' show={showResponse} onHide={() => setShowResponse(false)} backdrop='static' keyboar={false} size='md'>
+                    <Modal.Header closeButton>
+                        <div className='modal-activity-header'>
+                            <h3>Send Your Response</h3>
+                            <p>To student, Hanna Condada</p>
+                        </div>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <textarea className='post-concern-textarea'></textarea>
+                    </Modal.Body>
+                    <Modal.Footer>
+                            <Button onClick={() => setShowResponse(false)}>Send Response</Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
           </Col>
         </Row>
-      
-
       </div>
-      
     </>
   )
 }

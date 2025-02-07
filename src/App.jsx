@@ -10,7 +10,6 @@ import { ProfileComponent } from './components/student/ProfileComponent'
 
 
 import { DashboardComponent as TeacherDashboard } from './components/teacher/DashboardComponent';
-import { ClassManagementComponent as TeacherClassManagement } from './components/teacher/ClassManagementComponent';
 import NavigationBar from './components/teacher/AMNavigationBarComponent'
 import ActivitySettingsComponent from './components/teacher/ActivitySettingsComponent'
 import ActivityItemsComponent from './components/teacher/ActivityItemsComponent'
@@ -39,31 +38,35 @@ function App() {
           <Route path='/signin' element={<SignInComponent/>} />
           <Route path='/signup' element={<SignUpComponent/>} />
 
-          STUDENT
+          {/* STUDENT
           <Route path='/login' element={<DashboardComponent/>}/>
           <Route path='/sandbox' element={<PlaygroundComponent/>}/>
           <Route path='/dashboard' element={<DashboardComponent/>}/>
           <Route path='/profile' element={<ProfileComponent/>}/>
           <Route path='/class' element={<ClassManagementComponent/>}/>
-          <Route path='/assessment' element={<CodingAssessmentComponent/>}/>
+          <Route path='/assessment' element={<CodingAssessmentComponent/>}/> */}
 
           TEACHER
-          <Route path='/teacher-dashboard' element={<TeacherDashboard/>}/>
-            ACTIVITY MANAGEMENT
-            <Route path='/navigationbar' element={<NavigationBar/>} />
-            <Route path='/login' element={<TeacherDashboard/>}/>
-            <Route path='/leaderboard' element={<LeaderboardComponent/>}/>
-            <Route path='/items' element={<ActivityItemsComponent/>}/>
-              CLASS MANAGEMENT
-              <Route path='/cmNavigationBar' element={<CMNavigationBarComponent/>} />
-              <Route path='/settings' element={<ActivitySettingsComponent/>}/>
-              <Route path='/classrecord' element={<ClassRecord/>}/>
-              <Route path='/activities' element={<CMActivitiesComponent/>}/>
-                CREATE NEW ACTIVITY
+          <Route path='/dashboard' element={<TeacherDashboard/>}/>
+          <Route path='/sandbox' element={<TeacherPlayground/>}/>
+          <Route path='/profile' element={<TeacherProfile/>}/>
 
-              <Route path='/teacher-bulletin' element={<CMBulletinComponent/>}/>
-              <Route path='/tchr-coding-assessment' element={<TCHRCodingAssessmentComponent/>}/>
-              <Route path='/create-new-activity' element={<CreateActivityComponent/>}/>
+          ACTIVITY MANAGEMENT
+          <Route path='/navigationbar' element={<NavigationBar/>} />
+          <Route path='/login' element={<TeacherDashboard/>}/>
+          <Route path='/leaderboard' element={<LeaderboardComponent/>}/>
+          <Route path='/items' element={<ActivityItemsComponent/>}/>
+          <Route path='/settings' element={<ActivitySettingsComponent/>}/>
+
+          CLASS MANAGEMENT
+          <Route path='/cmNavigationBar' element={<CMNavigationBarComponent/>} />
+          <Route path='/classrecord' element={<ClassRecord/>}/>
+          <Route path='/activities' element={<CMActivitiesComponent/>}/>
+          <Route path='/teacher-bulletin' element={<CMBulletinComponent/>}/>
+
+          CREATE NEW ACTIVITY
+          <Route path='/tchr-coding-assessment' element={<TCHRCodingAssessmentComponent/>}/>
+          <Route path='/create-new-activity' element={<CreateActivityComponent/>}/>
           
         </Routes>
     </Router>

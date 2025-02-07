@@ -55,8 +55,7 @@ export const DashboardComponent = () => {
                         </Nav.Item>
                     </Nav>
                 </div>
-                
-                
+
                 <div className='dashboard-content'>
                     <Navbar expand='lg' fixed='top' className='navbar-top'>
                         <Button variant='transparent' className='toggle-btn' onClick={toggleSidebar}>
@@ -81,7 +80,7 @@ export const DashboardComponent = () => {
                     </Navbar>
 
                     
-                    <div className='container dashboard-content'>
+                    <div className='container'>
                         <h5>Active Classes</h5>
 
                         <div className='classes-container'>
