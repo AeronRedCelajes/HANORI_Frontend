@@ -1,3 +1,14 @@
+/* Color Palette */
+
+
+:root {
+    --primary-bg: #FFF5F1;
+    --primary-color: #B84C20;
+    --secondary-text: #989898;
+    --light-bg: #EFF0F5;
+    --success-color: #84C776;
+    --highlight-color: #F5DAD0;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
@@ -517,9 +528,6 @@ Form.Control, select, input[type="date"] {
 .label-with-icon i {
     font-size: 18px;
 }
-
-
-
 
 .open-date  i {
 color:#84C776;

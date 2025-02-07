@@ -5,6 +5,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBold, faItalic, faUnderline, faSuperscript, faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-solid-svg-icons';
 import '/src/style/teacher/amCreateNewActivity.css';
+import CMNavigationBarComponent from './CMNavigationBarComponent';
 
 const DateTimeItem = ({ icon, label, date, setDate, color, className }) => (
     <div className={`date-time-item ${className}`}>
@@ -48,7 +49,9 @@ export const CreateActivityComponent = () => {
     };
 
     return (
-        <div className='dashboard-content'>
+        <div className="whole-container">
+            <CMNavigationBarComponent />
+            <div className='dashboard-content'>
             <div className='create-activity-container'>
                 <h2>Create an Activity</h2>
                 <Form>
@@ -148,5 +151,7 @@ export const CreateActivityComponent = () => {
                 </div>
             </Modal>
         </div>
+        </div>
+        
     );
 };
