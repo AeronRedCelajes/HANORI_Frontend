@@ -15,6 +15,8 @@ import NavigationBar from './components/teacher/AMNavigationBarComponent'
 import ActivitySettingsComponent from './components/teacher/ActivitySettingsComponent'
 import ActivityItemsComponent from './components/teacher/ActivityItemsComponent'
 import LeaderboardComponent from './components/teacher/LeaderboardComponent'
+import { PlaygroundComponent as TeacherPlayground} from './components/teacher/PlaygroundComponent';
+import { ProfileComponent as TeacherProfile } from './components/teacher/ProfileComponent';
 
 function App() {
 
@@ -40,7 +42,9 @@ function App() {
           <Route path='/navigationbar' element={<NavigationBar/>} />
           <Route path='/login' element={<TeacherDashboard/>}/>
           <Route path='/dashboard' element={<TeacherDashboard/>}/>
+          <Route path='/profile' element={<TeacherProfile/>}/>
           <Route path='/class' element={<TeacherClassManagement/>}/>
+          <Route path='/sandbox' element={<TeacherPlayground/>}/>
           <Route path='/leaderboard' element={<LeaderboardComponent/>}/>
           <Route path='/items' element={<ActivityItemsComponent/>}/>
           <Route path='/settings' element={<ActivitySettingsComponent/>}/>

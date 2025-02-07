@@ -46,7 +46,7 @@ export const DashboardComponent = () => {
                         </Nav.Link>
                     </Nav.Item>
 
-                    <Nav.Item className='nav-item' onClick={() => navigate('/sandbox')}>
+                    <Nav.Item className='nav-item' onClick={handleSandboxClick}>
                         <Nav.Link href='#' className='nav-link'>
                             <FontAwesomeIcon icon={faLaptopCode} className='sidebar-icon' /> Sandbox
                         </Nav.Link>
