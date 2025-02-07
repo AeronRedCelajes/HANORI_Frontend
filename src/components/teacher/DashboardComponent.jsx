@@ -84,7 +84,7 @@ export const DashboardComponent = () => {
                         <Card className='class-card'>
                             <Card.Img variant='top' src='/src/assets/univ.png' />
                             <Card.Body>
-                                <Card.Text>Class name <br /> Instructor's name</Card.Text>
+                                <Card.Text onClick={handleClassClick}>Class name <br /> Instructor's name</Card.Text>
                             </Card.Body>
                         </Card>
 
@@ -94,7 +94,7 @@ export const DashboardComponent = () => {
                     </div>
                 </div>
 
-                <Modal show={showCreateClass} onHide={() => setShowCreateClass(false)} backdrop='static' keyboard={false} size='lg'>
+                <Modal className='modal-create-class' show={showCreateClass} onHide={() => setShowCreateClass(false)} backdrop='static' keyboard={false} size='lg'>
                     <Modal.Header closeButton>
                         <Modal.Title>Class Creation</Modal.Title>
                     </Modal.Header>

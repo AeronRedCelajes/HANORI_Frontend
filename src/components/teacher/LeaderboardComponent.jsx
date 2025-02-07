@@ -79,7 +79,6 @@ const mockStudents = [
 
   return (
     <div className="leaderboard-body">
-      <AMNavigationBarComponent />
       <div className="leaderboard-container">
         <div className="leaderboard-header">
           <h1 className="leaderboard-title">Leaderboard</h1>
@@ -113,44 +112,5 @@ const mockStudents = [
     </div>
   );
 };
-
-
-const NavigationBar = ({ navKey, setNavKey, handleDashboardClick, handleProfileClick, handleHomeClick }) => (
-  <Navbar expand='lg' className='class-navbar-top'>
-    <a href="#" onClick={(e) => { e.preventDefault(); handleDashboardClick(); }}>
-      <i className='bi bi-arrow-left-circle'></i>
-    </a>
-    <p>Dashboard</p>
-
-    <div className='navbar-center'>
-      <Tabs defaultActiveKey={navKey} id="tab" onSelect={(k) => setNavKey(k)} fill>
-        <Tab eventKey="leaderboard" title="Leaderboard"></Tab>
-        <Tab eventKey="item" title="Item"></Tab>
-        <Tab eventKey="settings" title="Settings"></Tab>
-      </Tabs>
-    </div>
-
-    <div className='dashboard-navbar'>
-      <span className='ping'>20 ms</span>
-      <a href="#"><i className='bi bi-moon'></i></a>
-      <span className='student-badge'>Student</span>
-      <Dropdown align='end'>
-        <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
-          <img src='/src/assets/angelica.png' className='profile-image' alt="Profile" />
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="#" onClick={(e) => { e.preventDefault(); handleProfileClick(); }}>
-            Boyet Profile Account
-          </Dropdown.Item>
-          <Dropdown.Item href="#" onClick={(e) => { e.preventDefault(); handleHomeClick(); }}>
-            Log Out
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    </div>
-  </Navbar>
-);
-
 
 export default Leaderboard;

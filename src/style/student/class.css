@@ -17,6 +17,7 @@
     border: none;
     margin-inline: 10px;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 .class-navbar-top .bi-arrow-left-circle:hover{
@@ -70,6 +71,7 @@
 .class-management{
     background-color: #CCCFDA;
     height: 100vh;
+    min-height: fit-content;
 }
 
 .class-content{

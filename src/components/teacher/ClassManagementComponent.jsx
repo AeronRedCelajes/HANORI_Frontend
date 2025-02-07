@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Dropdown, Row, Tabs, Col, Tab, Modal, Button } from 'react-bootstrap';
 import { BulletinComponent } from '../BulletinComponent';
-import '/src/style/student/class.css'
+import Leaderboard from './LeaderboardComponent';
+import '/src/style/teacher/class.css'
 
 export const ClassManagementComponent = () => {
 
@@ -36,12 +37,13 @@ export const ClassManagementComponent = () => {
     return (
         <>
             <Navbar expand='lg' className='class-navbar-top'>
-                <a href='#'><i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i></a>
+                <i className='bi bi-arrow-left-circle' onClick={handleDashboardClick}></i>
                 <p>Dashboard</p>
 
                 <div className='navbar-center'>
                     <Tabs defaultActiveKey={navkey} id="tab" onSelect={(k) => setNavKey(k)} fill>
                         <Tab eventKey="activities" title="Activities"></Tab>
+                        <Tab eventKey="class-record" title="Class Record"></Tab>
                         <Tab eventKey="bulletin" title="Bulletin"></Tab>
                     </Tabs>
                 </div>
@@ -49,7 +51,7 @@ export const ClassManagementComponent = () => {
                 <div className='dashboard-navbar'>
                     <span className='ping'>20 ms</span>
                     <a href='#'><i className='bi bi-moon'></i></a>
-                    <span className='student-badge'>Student</span>
+                    <span className='student-badge'>Teacher</span>
                     <Dropdown align='end'>
                         <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
                             <img src='/src/assets/angelica.png' className='profile-image'/>
@@ -193,6 +195,13 @@ export const ClassManagementComponent = () => {
                     )}
                 </div>  
                 
+                {navkey === "class-record" && (
+                    <>
+                        <Leaderboard/>
+                    </>
+
+                )}
+
                 {navkey === "bulletin" && (
                     <>
                         <BulletinComponent/>

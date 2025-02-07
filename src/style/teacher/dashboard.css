@@ -146,7 +146,7 @@
     display: flex;
     justify-content: start;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 180px;
     padding: 30px;
     transition: margin-left 0.3s ease;
@@ -190,6 +190,7 @@
     color: #B84C20;
     font-size: smaller;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .class-card .card-text a{
