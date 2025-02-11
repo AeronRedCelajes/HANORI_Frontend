@@ -1,163 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent';
-import { Modal, Button } from 'react-bootstrap';
-import '/src/style/student/profile.css';
-import { getProfile, updateProfile, getUserRole } from '../api/API.js';
-
+import React, { useState } from 'react'
+import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent'
+import {Modal, Button} from 'react-bootstrap'
+import '/src/style/student/profile.css'
+ 
 export const ProfileComponent = () => {
+
     const [showMain, setShowMain] = useState(false);
     const [showProfileDetails, setShowProfileDetails] = useState(false);
-    const [profile, setProfile] = useState({
-        name: '',
-        studentNo: '',
-        course: '',
-        yearLevel: '',
-        section: ''
-    });
-    const [formData, setFormData] = useState(profile);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-
-    // State for images
-    const [coverImage, setCoverImage] = useState(null);
-    const [profileImage, setProfileImage] = useState(null);
-
-    // Fetch profile data on component mount
-    useEffect(() => {
-        const fetchProfile = async () => {
-            const userId = sessionStorage.getItem('user_id'); // Assuming user_id is stored in session
-            const role = getUserRole();
-            if (!userId || role !== 'student') return;
-
-            const response = await getProfile(userId);
-            if (response.error) {
-                setError(response.error);
-            } else {
-                setProfile({
-                    name: response.name || '',
-                    studentNo: response.studentNo || '',
-                    course: response.course || '',
-                    yearLevel: response.yearLevel || '',
-                    section: response.section || '',
-                    coverImage: response.coverImage || null,
-                    profileImage: response.profileImage || null
-                });
-                setFormData(response);
-                setCoverImage(response.coverImage || null);
-                setProfileImage(response.profileImage || null);
-            }
-            setLoading(false);
-        };
-
-        fetchProfile();
-    }, []);
-
-    // Handle input changes
-    const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    // Handle cover image change
-    const handleCoverChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setCoverImage(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    // Handle profile image change
-    const handleProfileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setProfileImage(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    // Handle profile update
-    const handleSaveChanges = async () => {
-        const userId = sessionStorage.getItem('user_id');
-        if (!userId) return;
-
-        const updatedData = { 
-            ...formData, 
-            coverImage, 
-            profileImage 
-        };
-
-        const response = await updateProfile(userId, updatedData);
-        if (response.error) {
-            setError(response.error);
-        } else {
-            setProfile(updatedData);
-            setShowProfileDetails(false);
-            setShowMain(false);
-        }
-    };
 
     return (
         <>
-            <ProfilePlaygroundNavbarComponent />
+            <ProfilePlaygroundNavbarComponent/>
             <div className='profile'>
                 <div className='cover-container'>
-                    <img src={coverImage || '/src/assets/univ.png'} alt="Cover" className="cover-image" />
-                    <button type="button" className='btn' onClick={() => setShowMain(true)}>
-                        Edit Profile <i className="bi bi-pencil"></i>
-                    </button>
+                    <button type="button" className='btn' onClick={() => setShowMain(true)}>Edit Profile <i className="bi bi-pencil"></i></button>
                 </div>
 
-                {loading ? (
-                    <p>Loading profile...</p>
-                ) : error ? (
-                    <p className="error-text">{error}</p>
-                ) : (
-                    <div className='profile-container'>
-                        <div className='row'>
-                            <div className='col-4'>
-                                <div className='container info-container'>
-                                    <div className="profile-picture-container">
-                                        <img src={profileImage || '/src/assets/angelica.png'} alt="Profile" className="profile-image" />
-                                    </div>
-                                    <div>
-                                        <p className='name'>{profile.name}</p>
-                                        <p className='student-no'>Student # {profile.studentNo}</p>
-                                        <div className='details'>
-                                            <p><b>Course:</b> {profile.course}</p>
-                                            <p><b>Year Level:</b> {profile.yearLevel}</p>
-                                            <p><b>Section:</b> {profile.section}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                )}
-
-                {/* Edit Profile Modal */}
                 <Modal show={showMain} onHide={() => setShowMain(false)} backdrop='static' keyboard={false} size='lg' className='modal-profile'>
-                    <Modal.Header closeButton>
-                        <p className='modal-title w-100 text-center'>Edit Profile</p>
+                    <Modal.Header className='w-100 text-center' closeButton>
+                        <p className='modal-title w-100'>Edit Profile</p>
                     </Modal.Header>
-
                     <Modal.Body>
                         <div className='edit-button'>
                             <span>Cover Photo</span>
                             <Button>
-                                <label htmlFor='cover-upload' className='upload-label'>
+                                <label htmlFor='file-upload' className='upload-label'>
                                     Upload Photo
-                                    <input id='cover-upload' type='file' accept='image/*' hidden onChange={handleCoverChange}/>
+                                    <input id='file-upload' type='file' accept='image/*' hidden/>
                                 </label>
                             </Button>
                         </div>
                         <div className='edit-info'>
-                            <img src={coverImage || '/src/assets/univ.png'} alt="Cover"/>
+                            <img src='/src/assets/univ.png'/>
                         </div>
                     </Modal.Body>
 
@@ -165,14 +39,14 @@ export const ProfileComponent = () => {
                         <div className='edit-button'>
                             <span>Profile Photo</span>
                             <Button>
-                                <label htmlFor='profile-upload' className='upload-label'>
+                                <label htmlFor='file-upload' className='upload-label'>
                                     Upload Photo
-                                    <input id='profile-upload' type='file' accept='image/*' hidden onChange={handleProfileChange}/>
+                                    <input id='file-upload' type='file' accept='image/*' hidden/>
                                 </label>
                             </Button>
                         </div>
                         <div className='edit-info'>
-                            <img src={profileImage || '/src/assets/angelica.png'} alt="Profile"/>
+                            <img src='/src/assets/angelica.png'/>
                         </div>
                     </Modal.Body>
 
@@ -182,19 +56,76 @@ export const ProfileComponent = () => {
                             <Button onClick={() => setShowProfileDetails(true)}>Edit</Button>
                         </div>
                         <div className='edit-info'>
-                            <p>{profile.name}</p>
-                            <p>Student # {profile.studentNo}</p>
-                            <p>{profile.course}</p>
-                            <p>{profile.yearLevel}</p>
-                            <p>{profile.section}</p>
+                            <p>Angelica Mae Manliguez</p>
+                            <p>Student # 21-14329-587</p>
+                            <p>BS Computer Science</p>
                         </div>
                     </Modal.Body>
+                </Modal>
 
-                    <Modal.Footer>
-                        <Button onClick={handleSaveChanges}>Save Changes</Button>
+                <Modal show={showProfileDetails} onHide={() => setShowProfileDetails(false)} backdrop='static' keyboard={false} size='lg' className='custom-modal-edit'>
+                    <Modal.Header className='w-100 text-center' closeButton>
+                        <p className='modal-title w-100'>Edit your details</p>
+                    </Modal.Header>
+
+                    <Modal.Body className='body-details'>
+                        <label>Name: </label>
+                        <input type='text' placeholder='Ex. Angelica Mae Manliguez' className='form-control'/>
+                        
+                        <label>Student #: </label>
+                        <input type='text' placeholder='Ex. 21-14329-582' className='form-control'/>
+                    
+                        <label>Program: </label>
+                        <input type='text' placeholder='Ex. BS Computer Science' className='form-control'/>
+                    </Modal.Body>
+
+                    <Modal.Footer className='custom-modal-footer'>
+                        <Button>Save Changes</Button>
                     </Modal.Footer>
                 </Modal>
+
+                <div className='profile-container'>
+                    <div className='row'>
+                        <div className='col-4'>
+                            <div className='container info-container'>
+                                <div className="profile-picture-container"></div>
+                                <div>
+                                    <p className='name'>Angelica Mae Manliguez</p>
+                                    <p className='student-no'>Student # 21-14329-587</p>
+                                    
+                                    <div className='details'>
+                                        <p><b>Program:</b> BS Computer Science</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='col-8'>
+                            <div className='container performance-container'>
+                                <div className='performance-content'>   
+                                    <p className='title'>Performance</p>
+                                    <span className='border border-dark'></span>
+                                    <div className='analysis'>
+                                        <h4>Graph Analysis</h4>
+                                        <div className='row graph'>
+                                            <div className='col-7 linear'>
+                                                <img src='/src/assets/graph.png' alt='graph'/>
+                                            </div>
+                                            <div className='col-3 bar'>
+                                                <img src='/src/assets/bar.png' alt='bar'/>
+                                            </div>
+                                        </div>
+                                        <h6>Strengths</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <h6>Weaknesses</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
             </div>
         </>
-    );
-};
+    )
+}
