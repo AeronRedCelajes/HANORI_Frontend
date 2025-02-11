@@ -5,8 +5,20 @@ import { Button, Card, Dropdown, Form, Modal, Nav, Navbar } from 'react-bootstra
 import { useNavigate } from 'react-router-dom';
 import '/src/style/teacher/dashboard.css';
 
+import { logout } from '../api/API.js'; // Import logout function
+
 export const DashboardComponent = () => {
     
+    const handleLogout = async () => {
+        const result = await logout(); // Call logout function
+    
+        if (!result.error) {
+            window.location.href = "/home"; // Redirect to home after successful logout
+        } else {
+            alert("Logout failed. Try again.");
+        }
+    };
+
     const navigate_sandbox = useNavigate();
     const handleSandboxClick = () => {
         navigate_sandbox('/teacher/sandbox');
@@ -71,7 +83,7 @@ export const DashboardComponent = () => {
                             
                             <Dropdown.Menu>
                             <Dropdown.Item href='#' onClick={handleProfileClick}>Profile Account</Dropdown.Item>
-                            <Dropdown.Item href='#' onClick={handleHomeClick}>Log Out</Dropdown.Item>
+                            <Dropdown.Item href="#" onClick={handleLogout}>Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>

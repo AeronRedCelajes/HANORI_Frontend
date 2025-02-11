@@ -30,13 +30,13 @@ export const SignUpComponent = () => {
             console.log("API Response:", response); // Debugging step
     
             // Check if response status is 201 (for created) or contains a success message
-            if (response.status === 201 || response.success) {
+            if (response.access_token) { 
                 alert("Registration successful!");
                 navigate("/signin"); // Redirect to Sign In page
             } else {
                 alert(response.message || "Registration unsuccessful. Please try again.");
-                console.log("API Response:", response);
             }
+            
         } catch (error) {
             console.error("Registration error:", error);
             alert("An error occurred. Please try again.");

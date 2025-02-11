@@ -11,33 +11,32 @@ export const SignInComponent = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault();
-
-        // Validate email format (only student.edu or teacher.edu)
-        if (!email.endsWith("@student.edu") && !email.endsWith("@teacher.edu")) {
-            setError("Invalid email format! Use '@student.edu' or '@teacher.edu'.");
-            return;
-        }
-
+        setError(null);
+    
         try {
             const response = await login(email, password);
-
-            if (response.error) {
-                setError(response.error);
-            } else {
-                alert("Login successful!");
-
-                // Redirect based on user type
-                if (email.endsWith("@student.edu")) {
-                    navigate("/student/dashboard");
-                } else if (email.endsWith("@teacher.edu")) {
-                    navigate("/teacher/dashboard");
-                }
+    
+            if (!response.access_token) {
+                setError(response.message || "Invalid email or password.");
+                return;
+            }
+    
+            // Store role and token
+            localStorage.setItem("authToken", response.access_token);
+            localStorage.setItem("role", response.user_type); // Store user_type
+    
+            // Redirect based on role
+            if (response.user_type === "student") {
+                navigate("/student/dashboard");
+            } else if (response.user_type === "teacher") {
+                navigate("/teacher/dashboard");
             }
         } catch (error) {
             console.error("Login error:", error);
             setError("An error occurred. Please try again.");
         }
     };
+    
 
     return (
         <div className="container-fluid vh-100 d-flex p-0">
@@ -87,9 +86,7 @@ export const SignInComponent = () => {
                             />
                         </div>
 
-                        <a href="#" className="d-block mb-3 text-danger text-end">
-                            Forgot Password?
-                        </a>
+                        <br></br>
 
                         <button type="submit" className="w-100 custom-button">Sign In</button>
 
