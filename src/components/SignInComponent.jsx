@@ -25,7 +25,13 @@ export const SignInComponent = () => {
                 setError(response.error);
             } else {
                 alert("Login successful!");
-                navigate("/dashboard"); // Redirect to dashboard or homepage
+
+                // Redirect based on user type
+                if (email.endsWith("@student.edu")) {
+                    navigate("/student/dashboard");
+                } else if (email.endsWith("@teacher.edu")) {
+                    navigate("/teacher/dashboard");
+                }
             }
         } catch (error) {
             console.error("Login error:", error);

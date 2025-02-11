@@ -38,18 +38,18 @@ function App() {
           <Route path='/signin' element={<SignInComponent/>} />
           <Route path='/signup' element={<SignUpComponent/>} />
 
-          {/* STUDENT
-          <Route path='/login' element={<DashboardComponent/>}/>
-          <Route path='/sandbox' element={<PlaygroundComponent/>}/>
-          <Route path='/dashboard' element={<DashboardComponent/>}/>
-          <Route path='/profile' element={<ProfileComponent/>}/>
-          <Route path='/class' element={<ClassManagementComponent/>}/>
-          <Route path='/assessment' element={<CodingAssessmentComponent/>}/> */}
+          STUDENT
+          {/*<Route path='/login' element={<DashboardComponent/>}/>*/}
+          <Route path='/student/sandbox' element={<PlaygroundComponent/>}/>
+          <Route path='/student/dashboard' element={<DashboardComponent/>}/>
+          <Route path='/student/profile' element={<ProfileComponent/>}/>
+          <Route path='/student/class' element={<ClassManagementComponent/>}/>
+          <Route path='/student/assessment' element={<CodingAssessmentComponent/>}/>
 
           TEACHER
-          <Route path='/dashboard' element={<TeacherDashboard/>}/>
-          <Route path='/sandbox' element={<TeacherPlayground/>}/>
-          <Route path='/profile' element={<TeacherProfile/>}/>
+          <Route path='/teacher/dashboard' element={<TeacherDashboard/>}/>
+          <Route path='/teacher/sandbox' element={<TeacherPlayground/>}/>
+          <Route path='/teacher/profile' element={<TeacherProfile/>}/>
 
           ACTIVITY MANAGEMENT
           <Route path='/navigationbar' element={<NavigationBar/>} />
