@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute.jsx";  // Import fixed component
+import ProtectedRoute from "./ProtectedRoute.jsx"; // Import fixed component
 
 import { HomeComponents } from "./components/HomeComponent";
 import { SignInComponent } from "./components/SignInComponent";
-import { SignUpComponent } from "./components/SignUpComponent";
+import { SignUpComponent } from "./components/SignUpComponent"; // New selection component
+import { SignUpStudent } from "./components/SignUpStudent"; // Student-specific signup
+import { SignUpTeacher } from "./components/SignUpTeacher"; // Teacher-specific signup
 
 // Student Components
 import { PlaygroundComponent } from "./components/student/PlaygroundComponent";
@@ -34,7 +36,9 @@ function App() {
                 <Route path="/" element={<HomeComponents />} />
                 <Route path="/home" element={<HomeComponents />} />
                 <Route path="/signin" element={<SignInComponent />} />
-                <Route path="/signup" element={<SignUpComponent />} />
+                <Route path="/signup" element={<SignUpComponent />} />  {/* Role selection */}
+                <Route path="/signup/student" element={<SignUpStudent />} /> {/* Student Signup */}
+                <Route path="/signup/teacher" element={<SignUpTeacher />} /> {/* Teacher Signup */}
 
                 {/* Protected Student Routes */}
                 <Route element={<ProtectedRoute allowedRoles={["student"]} />}>
