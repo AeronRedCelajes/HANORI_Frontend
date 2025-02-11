@@ -9,12 +9,12 @@ export const DashboardComponent = () => {
     
     const navigate_sandbox = useNavigate();
     const handleSandboxClick = () => {
-        navigate_sandbox('/sandbox');
+        navigate_sandbox('/teacher/sandbox');
     };
 
     const navigate_profile = useNavigate();
     const handleProfileClick = () => {
-        navigate_profile('/profile');
+        navigate_profile('/teacher/profile');
     };
 
     const navigate_home = useNavigate();
@@ -24,7 +24,7 @@ export const DashboardComponent = () => {
 
     const navigate_class = useNavigate();
     const handleClassClick = () =>{
-        navigate_class('/activities')
+        navigate_class('/teacher/activities')
     }
 
     const [sidebarOpen, setSidebarOpen] = useState(true);

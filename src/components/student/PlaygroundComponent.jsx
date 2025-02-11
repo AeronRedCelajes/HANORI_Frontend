@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button } from 'react-bootstrap';
-import {ProfilePlaygroundNavbarComponent} from '../ProfilePlaygroundNavbarComponent'
-import '/src/style/student/playground.css'
+import { useNavigate } from 'react-router-dom';
+import { Row, Col, Dropdown, DropdownButton, Tab, Tabs, Button, Spinner } from 'react-bootstrap';
+import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent';
+import '../../style/student/playground.css'; // Ensure the correct import path
 
 export const PlaygroundComponent = () => {
     const navigate_dashboard = useNavigate();
 
     const handleDashboardClick = () => {
-        navigate_dashboard('/dashboard');
+        navigate_dashboard('/student/dashboard');
     };
 
     // Dropdown for language selection
@@ -23,9 +24,9 @@ export const PlaygroundComponent = () => {
     };
 
     const languageMap = {
-        'C#': 'cs', // API expects 'cs' for C#
+        'C#': 'cs',
         'Java': 'java',
-        'Python': 'py', // API expects 'py' for Python
+        'Python': 'py',
     };
 
     // Tabs
@@ -39,28 +40,27 @@ export const PlaygroundComponent = () => {
 
     const handleRunCode = async () => {
         setLoading(true);
-        setOutput(''); // Clear previous output
+        setOutput('');
 
-        // Check for language validity
-        const validLanguages = ['Java', 'Python', 'C#'];
-        if (!validLanguages.includes(selectedLanguage.name)) {
+        if (!['Java', 'Python', 'C#'].includes(selectedLanguage.name)) {
             setOutput('Error: Unsupported language selected.');
             setLoading(false);
             return;
         }
 
         try {
+            console.log("Running Code:", { language: selectedLanguage.name, code, input });
+
             const response = await fetch('https://api.codex.jaagrav.in', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     code: code,
-                    language: languageMap[selectedLanguage.name], // Use the correct language code
+                    language: languageMap[selectedLanguage.name],
                     input: input,
                 }),
             });
+
             const data = await response.json();
             if (response.ok) {
                 setOutput(data.output || 'No output');
@@ -101,7 +101,7 @@ export const PlaygroundComponent = () => {
                                             {selectedLanguage.name}
                                         </>
                                     }
-                                    onSelect={handleSelect}
+                                    onSelect={(eventKey) => handleSelect(eventKey)}
                                 >
                                     <Dropdown.Item eventKey="C#"><img src="/src/assets/c.png" alt="csharp-icon" />C#</Dropdown.Item>
                                     <Dropdown.Item eventKey="Java"><img src="/src/assets/java2.png" alt="java-icon" />Java</Dropdown.Item>
@@ -115,14 +115,14 @@ export const PlaygroundComponent = () => {
 
                     <div className="playground-editor">
                         <textarea
-                            className="code-editor" // may style ito sa playground.css paki ayos na lng thx
+                            className="code-editor"
                             value={code}
                             onChange={(e) => setCode(e.target.value)}
                             rows={15}
                             placeholder="Write your code here..."
                         ></textarea>
                         <textarea
-                            className="input-editor" // may style ito sa playground.css paki ayos na lng thx
+                            className="input-editor"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             rows={5}

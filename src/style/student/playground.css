@@ -106,8 +106,8 @@
 .code-editor,
 .input-editor {
     width: calc(100% - 30px);
-    background-color: #2b2b2b;
-    color: #fff;
+    background-color: #FFF5F1;
+    color: #222;
     border: 1px solid #444;
     border-radius: 5px;
     font-size: 14px;
@@ -123,7 +123,7 @@
 
 .input-editor {
     height: 80px;
-    background-color: #3a3a3a;
+    background-color: #FFF5F1;
 }
 
 /* Bottom Section */
@@ -152,8 +152,8 @@
 
 /* Output Section */
 .playground-output {
-    background-color: #222;
-    color: #ddd;
+    background-color: #FFF5F1;
+    color: #222;
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
