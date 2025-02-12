@@ -1,14 +1,31 @@
 import { faBars, faDesktop, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Card, Dropdown, Form, Modal, Nav, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '/src/style/teacher/dashboard.css';
 
-import { logout } from '../api/API.js'; // Import logout function
+import { logout, getProfile } from '../api/API.js'; // Import API functions
 
 export const DashboardComponent = () => {
     
+    const [profileImage, setProfileImage] = useState('/src/assets/default-profile.png'); // Default profile image
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await getProfile(); // Fetch teacher profile from API
+                if (response && response.profileImage) {
+                    setProfileImage(response.profileImage); // Set profile image from backend
+                }
+            } catch (error) {
+                console.error("Error fetching profile image:", error);
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
     const handleLogout = async () => {
         const result = await logout(); // Call logout function
     
@@ -78,12 +95,12 @@ export const DashboardComponent = () => {
                         <span className='student-badge'>Teacher</span>
                         <Dropdown align='end'>
                             <Dropdown.Toggle variant='transparent' className='profile-dropdown'>
-                                <img src='/src/assets/angelica.png' className='profile-image'/>
+                                <img src={profileImage} className='profile-image' alt="Profile" />
                             </Dropdown.Toggle>
                             
                             <Dropdown.Menu>
-                            <Dropdown.Item href='#' onClick={handleProfileClick}>Profile Account</Dropdown.Item>
-                            <Dropdown.Item href="#" onClick={handleLogout}>Log Out</Dropdown.Item>
+                                <Dropdown.Item href='#' onClick={handleProfileClick}>Profile Account</Dropdown.Item>
+                                <Dropdown.Item href="#" onClick={handleLogout}>Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
@@ -114,12 +131,12 @@ export const DashboardComponent = () => {
                         <Form>
                             <Form.Group controlId='formClassName'>
                                 <Form.Label>Class Name</Form.Label>
-                                <Form.Control type='text' placeholder='Enter class name' onChange={(e) => setClassName(e.target.value)} />
+                                <Form.Control type='text' placeholder='Enter class name' />
                             </Form.Group>
 
                             <Form.Group controlId='formSection'>
                                 <Form.Label>Section</Form.Label>
-                                <Form.Control as='select' onChange={(e) => setSection(e.target.value)}>
+                                <Form.Control as='select'>
                                     <option value=''>Select section</option>
                                     <option value='1BSCS-1'>1BSCS-1</option>
                                     <option value='1BSCS-2'>1BSCS-2</option>
@@ -139,4 +156,3 @@ export const DashboardComponent = () => {
         </div>
     );
 };
-

@@ -1,118 +1,195 @@
-import React, { useState } from 'react'
-import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent'
-import {Modal, Button} from 'react-bootstrap'
-import '/src/style/teacher/profile.css'
- 
+import React, { useState, useEffect } from 'react';
+import { ProfilePlaygroundNavbarComponent } from '../ProfilePlaygroundNavbarComponent';
+import { Modal, Button } from 'react-bootstrap';
+import { getProfile, updateProfile, deleteProfile } from '../api/API.js'; // Import API functions
+import '/src/style/student/profile.css';
+
 export const ProfileComponent = () => {
+  const defaultProfileImage = '/src/assets/noy.png';
+  const defaultCoverImage = '/src/assets/univ.png';
 
-    const [showMain, setShowMain] = useState(false);
-    const [showProfileDetails, setShowProfileDetails] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [profile, setProfile] = useState({
+    firstname: '',
+    lastname: '',
+    profileImage: '',
+    coverImage: '',
+    newPassword: ''
+  });
 
-    return (
-        <>
-            <ProfilePlaygroundNavbarComponent/>
-            <div className='profile'>
-                <div className='cover-container'>
-                    <button type="button" className='btn' onClick={() => setShowMain(true)}>Edit Profile <i className="bi bi-pencil"></i></button>
-                </div>
+  const [newProfileImage, setNewProfileImage] = useState(null);
+  const [newCoverImage, setNewCoverImage] = useState(null);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
-                <Modal show={showMain} onHide={() => setShowMain(false)} backdrop='static' keyboard={false} size='lg' className='modal-profile'>
-                    <Modal.Header className='w-100 text-center' closeButton>
-                        <p className='modal-title w-100'>Edit Profile</p>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div className='edit-button'>
-                            <span>Cover Photo</span>
-                            <Button>
-                                <label htmlFor='file-upload' className='upload-label'>
-                                    Upload Photo
-                                    <input id='file-upload' type='file' accept='image/*' hidden/>
-                                </label>
-                            </Button>
-                        </div>
-                        <div className='edit-info'>
-                            <img src='/src/assets/univ.png'/>
-                        </div>
-                    </Modal.Body>
+  // Fetch user profile on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const data = await getProfile();
+      if (!data.error) {
+        setProfile({
+          ...data,
+          profileImage: data.profileImage || defaultProfileImage,
+          coverImage: data.coverImage || defaultCoverImage,
+        });
+      } else {
+        console.error("Failed to fetch profile:", data.error);
+      }
+    };
+    fetchProfile();
+  }, []);
 
-                    <Modal.Body>
-                        <div className='edit-button'>
-                            <span>Profile Photo</span>
-                            <Button>
-                                <label htmlFor='file-upload' className='upload-label'>
-                                    Upload Photo
-                                    <input id='file-upload' type='file' accept='image/*' hidden/>
-                                </label>
-                            </Button>
-                        </div>
-                        <div className='edit-info'>
-                            <img src='/src/assets/angelica.png'/>
-                        </div>
-                    </Modal.Body>
+  // Handle input changes
+  const handleInputChange = (e) => {
+    setProfile({ ...profile, [e.target.name]: e.target.value });
+  };
 
-                    <Modal.Body>
-                        <div className='edit-button'>
-                            <span>Profile Details</span>
-                            <Button onClick={() => setShowProfileDetails(true)}>Edit</Button>
-                        </div>
-                        <div className='edit-info'>
-                            <p>Angelica Mae Manliguez</p>
-                            <p>Student # 21-14329-587</p>
-                            <p>BS Computer Science</p>
-                            <p>4th Year</p>
-                            <p>4-BSCS-1</p>
-                        </div>
-                    </Modal.Body>
-                </Modal>
+  // Handle file uploads: store the file object
+  const handleFileChange = (e, type) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (type === 'profile') {
+        setNewProfileImage(file);
+      } else if (type === 'cover') {
+        setNewCoverImage(file);
+      }
+    }
+  };
 
-                <Modal show={showProfileDetails} onHide={() => setShowProfileDetails(false)} backdrop='static' keyboard={false} size='lg' className='custom-modal-edit'>
-                    <Modal.Header className='w-100 text-center' closeButton>
-                        <p className='modal-title w-100'>Edit your details</p>
-                    </Modal.Header>
+  // Save profile changes using FormData
+  const handleSaveChanges = async () => {
+    // Build the updatedProfile object and call updateProfile (as before)
+    const updatedProfile = { ...profile };
+    if (newProfileImage) {
+      updatedProfile.profileImage = newProfileImage;
+    }
+    if (newCoverImage) {
+      updatedProfile.coverImage = newCoverImage;
+    }
+    Object.keys(updatedProfile).forEach((key) => {
+      if (updatedProfile[key] === "") {
+        delete updatedProfile[key];
+      }
+    });
+  
+    const response = await updateProfile(updatedProfile);
+    if (!response.error) {
+      alert("Profile updated successfully!");
+      setShowEditModal(false);
+      // Force a full page reload to get the latest data and images
+      window.location.reload();
+    } else {
+      alert("Failed to update profile: " + response.error);
+    }
+  };  
 
-                    <Modal.Body className='body-details'>
-                        <label>Name: </label>
-                        <input type='text' placeholder='Ex. Angelica Mae Manliguez' className='form-control'/>
-                        
-                        <label>Student #: </label>
-                        <input type='text' placeholder='Ex. 21-14329-582' className='form-control'/>
-                    
-                        <label>Course: </label>
-                        <input type='text' placeholder='Ex. BS Computer Science' className='form-control'/>
+    // Handle profile deletion
+    const handleDeleteProfile = async () => {
+        // Confirm deletion with the user
+        const confirmDelete = window.confirm("Are you sure you want to delete your profile? This action cannot be undone.");
+        if (!confirmDelete) return;
+    
+        const response = await deleteProfile();
+        if (!response.error) {
+          alert("Profile deleted successfully!");
+          // Clear session or redirect to home
+          window.location.href = "/home";
+        } else {
+          alert("Failed to delete profile: " + response.error);
+        }
+      };
 
-                        <label>Year Level: </label>
-                        <input type='text' placeholder='Ex. 4th Year' className='form-control'/>
+  return (
+    <>
+      <ProfilePlaygroundNavbarComponent />
+      <div className='profile'>
 
-                        <label>Section: </label>
-                        <input type='text' placeholder='Ex. 4-BSCS-1' className='form-control'/>
-                    </Modal.Body>
+        {/* Cover Image Section */}
+        <div className='cover-container' style={{ backgroundImage: `url(${profile.coverImage})` }}>
+          <button type="button" className='btn' onClick={() => setShowEditModal(true)}>
+            Edit Profile <i className="bi bi-pencil"></i>
+          </button>
+        </div>
 
-                    <Modal.Footer className='custom-modal-footer'>
-                        <Button>Save Changes</Button>
-                    </Modal.Footer>
-                </Modal>
+        {/* Edit Profile Modal */}
+        <Modal show={showEditModal} onHide={() => setShowEditModal(false)} backdrop='static' keyboard={false} size='lg' className='modal-profile'>
+          <Modal.Header closeButton>
+            <p className='modal-title w-100'>Edit Profile</p>
+          </Modal.Header>
 
-                <div className='profile-container'>
-                    <div className='row'>
-                        <div className='col-4'>
-                            <div className='container info-container'>
-                                <div className="profile-picture-container"></div>
-                                <div>
-                                    <p className='name'>Angelica Mae Manliguez</p>
-                                    <p className='student-no'>Professor # 21-14329-587</p>
-                                    
-                                    <div className='details'>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='col-8'>
-                            
-                        </div>
-                    </div> 
-                </div>
+          <Modal.Body>
+            {/* Cover Image Upload */}
+            <div className='edit-button'>
+              <span>Cover Photo</span>
+              <Button>
+                <label htmlFor='cover-upload' className='upload-label'>
+                  Upload Photo
+                  <input id='cover-upload' type='file' accept='image/*' hidden onChange={(e) => handleFileChange(e, 'cover')} />
+                </label>
+              </Button>
             </div>
-        </>
-    )
-}
+            <img src={newCoverImage ? URL.createObjectURL(newCoverImage) : profile.coverImage} className='preview-image' alt="Cover Preview" />
+
+            {/* Profile Image Upload */}
+            <div className='edit-button'>
+              <span>Profile Photo</span>
+              <Button>
+                <label htmlFor='profile-upload' className='upload-label'>
+                  Upload Photo
+                  <input id='profile-upload' type='file' accept='image/*' hidden onChange={(e) => handleFileChange(e, 'profile')} />
+                </label>
+              </Button>
+            </div>
+            <img src={newProfileImage ? URL.createObjectURL(newProfileImage) : profile.profileImage} className='preview-image' alt="Profile Preview" />
+
+            {/* Profile Details Edit */}
+            <div className='edit-details'>
+              <label>First Name:</label>
+              <input type='text' name='firstname' value={profile.firstname} onChange={handleInputChange} className='form-control' />
+
+              <label>Last Name:</label>
+              <input type='text' name='lastname' value={profile.lastname} onChange={handleInputChange} className='form-control' />
+
+              {/* New Password (Editable) */}
+              <label>New Password:</label>
+              <div className="password-field">
+                <input
+                  type={showNewPassword ? "text" : "password"}
+                  name="newPassword"
+                  value={profile.newPassword || ""}
+                  onChange={handleInputChange}
+                  className='form-control'
+                  placeholder="Enter new password"
+                />
+                <i
+                  className={`bi ${showNewPassword ? "bi-eye-slash" : "bi-eye"}`}
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                ></i>
+              </div>
+            </div>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleDeleteProfile}>Delete Profile</Button>
+            <Button onClick={handleSaveChanges}>Save Changes</Button>
+          </Modal.Footer>
+        </Modal>
+
+        {/* Profile Display Section */}
+        <div className='profile-container'>
+          <div className='row'>
+            <div className='col-4'>
+              <div className='container info-container'>
+                <div className="profile-picture-container" style={{ backgroundImage: `url(${profile.profileImage})` }}></div>
+                <div>
+                  <p className='name'>{profile.firstname} {profile.lastname}</p>
+                  <p><b>Role:</b> Instructor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </>
+  );
+};
