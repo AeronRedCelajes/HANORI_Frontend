@@ -19,6 +19,8 @@ export const SignInComponent = () => {
             if (!response.access_token) {
                 setError(response.message || "Invalid email or password.");
                 return;
+            }else{
+                alert("LogIn Successful!");
             }
     
             // Store role and token
