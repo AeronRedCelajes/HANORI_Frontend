@@ -25,7 +25,7 @@ export const SignInComponent = () => {
     
             // Store role and token
             localStorage.setItem("authToken", response.access_token);
-            localStorage.setItem("role", response.user_type); // Store user_type
+            localStorage.setItem("user_type", response.user_type); // Store user_type
     
             // Redirect based on role
             if (response.user_type === "student") {

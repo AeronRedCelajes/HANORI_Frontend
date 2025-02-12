@@ -13,9 +13,6 @@ async function register(firstname, lastname, email, student_num, program, passwo
             payload.program = program;
         }
 
-        console.log("📤 Sending Request to:", endpoint);
-        console.log("📦 Payload:", payload); // Debugging
-
         const response = await fetch(endpoint, {
             method: "POST",
             body: JSON.stringify(payload),
@@ -23,7 +20,6 @@ async function register(firstname, lastname, email, student_num, program, passwo
         });
 
         const data = await response.json();
-        console.log("📥 Response:", data); // Debugging
 
         if (!response.ok) {
             return { error: data.message || "Registration failed", details: data.errors || {} };
@@ -46,14 +42,23 @@ async function login(email, password) {
         });
 
         const data = await response.json();
+        console.log("API Response:", data); // Debugging output
 
         if (!response.ok) {
             return { error: data.message || "Login failed" };
         }
 
-        // Store authentication details in sessionStorage
+        // Extract and store authentication details
         sessionStorage.setItem("access_token", data.access_token);
-        sessionStorage.setItem("user_email", email); // Store email for role detection
+        sessionStorage.setItem("user_email", email);
+        sessionStorage.setItem("user_type", data.user_type);
+
+        // Store the correct ID based on userType
+        if (data.user_type === "student" && data.studentID) {
+            sessionStorage.setItem("userID", data.studentID);
+        } else if (data.user_type === "teacher" && data.teacherID) {
+            sessionStorage.setItem("userID", data.teacherID);
+        }
 
         return data;
     } catch (error) {
@@ -61,7 +66,6 @@ async function login(email, password) {
         return { error: "Something went wrong during login." };
     }
 }
-
 
 // Function to log out a user
 async function logout() {
@@ -95,25 +99,31 @@ function hasAccessToken() {
 async function getUserInfo() {
     const token = sessionStorage.getItem("access_token");
 
-    if (!token) return { error: "Unauthorized access" };
+    if (!token) return { error: "Unauthorized access: No token found" };
 
     const data = await safeFetch(`${API_LINK}/user`, {
         method: "GET",
         headers: { "Authorization": `Bearer ${token}` }
     });
 
+    console.log("🔍 User Info Response:", data); // Debugging
+
     if (!data.error) {
         sessionStorage.setItem("user_type", data.user_type);
-        
-        if (data.user_type === "student") {
-            sessionStorage.setItem("student_num", data.user.student_num); // Store student number
+
+        // Store correct user ID
+        if (data.user_type === "student" && data.studentID) {
+            sessionStorage.setItem("userID", data.studentID);
+        } else if (data.user_type === "teacher" && data.teacherID) {
+            sessionStorage.setItem("userID", data.teacherID);
         } else {
-            sessionStorage.setItem("user_id", data.user.id); // Store teacher ID
+            return { error: "User data is incomplete" };
         }
     }
 
     return data;
 }
+
 
 // Function to get the stored user role
 function getUserRole() {
@@ -123,13 +133,16 @@ function getUserRole() {
 // Function to fetch the user's profile (Student or Teacher)
 async function getProfile() {
     const token = sessionStorage.getItem("access_token");
-    const role = getUserRole();
+    const role = sessionStorage.getItem("user_type");
+    const userID = sessionStorage.getItem("userID");
 
-    if (!token || !role) return { error: "Unauthorized access" };
+    console.log("🔍 Access Token:", token);
+    console.log("🔍 User Role:", role);
+    console.log("🔍 User ID:", userID);
 
-    const userId = role === "student" ? sessionStorage.getItem("student_num") : sessionStorage.getItem("user_id");
+    if (!token || !role || !userID) return { error: "Unauthorized access: Missing credentials" };
 
-    const endpoint = role === "student" ? `profile/students/${userId}` : `profile/teachers/${userId}`;
+    const endpoint = role === "student" ? `profile/student/${userID}` : `profile/teacher/${userID}`;
 
     return await safeFetch(`${API_LINK}/${endpoint}`, {
         method: "GET",
@@ -141,12 +154,13 @@ async function getProfile() {
 async function updateProfile(profileData) {
     const token = sessionStorage.getItem("access_token");
     const role = getUserRole();
-    const userId = sessionStorage.getItem("user_id");
+    const userID = sessionStorage.getItem("userID");
 
-    if (!token || !role || !userId) return { error: "Unauthorized access" };
+    if (!token || !role || !userID) return { error: "Unauthorized access" };
 
-    const endpoint = role === "student" ? `profile/students/${userId}` : `profile/teachers/${userId}`;
-    const response = await fetch(`${API_LINK}/${endpoint}`, {
+    const endpoint = role === "student" ? `profile/student/${userID}` : `profile/teacher/${userID}`;
+
+    return await safeFetch(`${API_LINK}/${endpoint}`, {
         method: "PUT",
         body: JSON.stringify(profileData),
         headers: {
@@ -154,10 +168,57 @@ async function updateProfile(profileData) {
             "Content-Type": "application/json"
         }
     });
+}
 
-    const data = await response.json();
-    return response.ok ? data : { error: data.message || "Failed to update profile" };
+
+// Function to delete a user's profile
+async function deleteProfile() {
+    const token = sessionStorage.getItem("access_token");
+    const role = getUserRole();
+    const userID = sessionStorage.getItem("userID");
+
+    if (!token || !role || !userID) return { error: "Unauthorized access" };
+
+    const endpoint = role === "student" ? `profile/student/${userID}` : `profile/teacher/${userID}`;
+
+    const response = await safeFetch(`${API_LINK}/${endpoint}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (!response.error) {
+        sessionStorage.clear(); // Clear session on deletion
+        return { message: "Profile deleted successfully" };
+    }
+
+    return { error: "Failed to delete profile" };
+}
+
+
+// Helper function for safe API calls
+async function safeFetch(url, options) {
+    try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        return response.ok ? data : { error: data.message || "Request failed" };
+    } catch (error) {
+        console.error("API Error:", error);
+        return { error: "Something went wrong." };
+    }
 }
 
 // Exporting functions for use in other files
-export { register, login, logout, hasAccessToken, getUserRole, getProfile, updateProfile, getUserInfo };
+export { 
+    register, 
+    login, 
+    logout, 
+    hasAccessToken, 
+    getUserRole, 
+    getProfile, 
+    updateProfile, 
+    deleteProfile, 
+    getUserInfo 
+};
