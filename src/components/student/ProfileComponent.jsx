@@ -194,7 +194,29 @@ export const ProfileComponent = () => {
             </div>
           </div>
         </div>
-
+        <div className='col-8'>
+          <div className='container performance-container'>
+              <div className='performance-content'>   
+                  <p className='title'>Performance</p>
+                  <span className='border border-dark'></span>
+                  <div className='analysis'>
+                      <h4>Graph Analysis</h4>
+                      <div className='row graph'>
+                          <div className='col-7 linear'>
+                              <img src='/src/assets/graph.png' alt='graph'/>
+                          </div>
+                          <div className='col-3 bar'>
+                              <img src='/src/assets/bar.png' alt='bar'/>
+                          </div>
+                      </div>
+                      <h6>Strengths</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <h6>Weaknesses</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
       </div>
     </>
   );

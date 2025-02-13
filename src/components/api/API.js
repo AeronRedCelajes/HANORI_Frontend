@@ -1,4 +1,4 @@
-const API_LINK = "http://localhost:8000/api"; // Base API URL for backend
+const API_LINK = "http://127.0.0.1:8000/api"; // Base API URL for backend
 
 // Function to register a user (student or teacher)
 async function register(firstname, lastname, email, student_num, program, password) {
@@ -197,8 +197,7 @@ async function updateProfile(profileData) {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        //   "Accept": "application/json" // Let the browser set the Content-Type automatically.
+          "Accept": "application/json" // Let the browser set the Content-Type automatically.
         },
         body: formData,
         credentials: "include"
