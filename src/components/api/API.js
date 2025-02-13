@@ -197,7 +197,8 @@ async function updateProfile(profileData) {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
-          "Accept": "application/json" // Let the browser set the Content-Type automatically.
+          "Content-Type": "application/json"
+        //   "Accept": "application/json" // Let the browser set the Content-Type automatically.
         },
         body: formData,
         credentials: "include"
