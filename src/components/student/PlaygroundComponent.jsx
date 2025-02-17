@@ -42,8 +42,22 @@ export const PlaygroundComponent = () => {
         setLoading(true);
         setOutput('');
 
+        // Check if the code matches the selected language
+        if (!isValidCodeForSelectedLanguage(code, selectedLanguage.name)) {
+            setOutput(`Error: Your code does not match the selected language (${selectedLanguage.name}).`);
+            setLoading(false);
+            return;
+        }
+
         if (!['Java', 'Python', 'C#'].includes(selectedLanguage.name)) {
             setOutput('Error: Unsupported language selected.');
+            setLoading(false);
+            return;
+        }
+
+        // Check if the code requires input but none is provided
+        if (requiresInput(code, selectedLanguage.name) && input.trim() === '') {
+            setOutput('Error: Your code requires input, but no input was provided.');
             setLoading(false);
             return;
         }
@@ -51,7 +65,19 @@ export const PlaygroundComponent = () => {
         try {
             console.log("Running Code:", { language: selectedLanguage.name, code, input });
 
-            const response = await fetch('https://api.codex.jaagrav.in', {
+            // IF USING THE API COMPILER FROM THE INTERNET
+            // const response = await fetch('https://api.codex.jaagrav.in', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         code: code,
+            //         language: languageMap[selectedLanguage.name],
+            //         input: input,
+            //     }),
+            // });
+
+            // IF RUNNING THE COMPILER LOCALLY IN A MACHINE
+            const response = await fetch('http://localhost:8080', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -72,6 +98,28 @@ export const PlaygroundComponent = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    // Function to check if the code matches the selected language
+    const isValidCodeForSelectedLanguage = (code, language) => {
+        const patterns = {
+            'Java': /\b(public\s+class\s+\w+|System\.out\.println|import\s+java\.)\b/,
+            'Python': /\b(def\s+\w+\(|print\(|import\s+\w+|class\s+\w+)\b/,
+            'C#': /\b(using\s+System;|namespace\s+\w+|Console\.WriteLine)\b/
+        };
+
+        return patterns[language].test(code);
+    };
+
+    // Function to check if the code contains an input statement
+    const requiresInput = (code, language) => {
+        const inputPatterns = {
+            'Java': /\bnew\s+Scanner\(System\.in\)/,
+            'Python': /\binput\(/,
+            'C#': /\bConsole\.ReadLine\(\)/
+        };
+
+        return inputPatterns[language].test(code);
     };
 
     return (
