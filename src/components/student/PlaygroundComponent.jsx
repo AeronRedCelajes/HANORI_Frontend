@@ -76,8 +76,19 @@ export const PlaygroundComponent = () => {
             //     }),
             // });
 
-            // IF RUNNING THE COMPILER LOCALLY IN A MACHINE
-            const response = await fetch('http://localhost:8080', {
+            // // IF RUNNING THE COMPILER LOCALLY IN A MACHINE
+            // const response = await fetch('http://localhost:8080', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         code: code,
+            //         language: languageMap[selectedLanguage.name],
+            //         input: input,
+            //     }),
+            // });
+
+            // IF RUNNING THE COMPILER USING RAILWAY
+            const response = await fetch('https://neudevcompiler-production.up.railway.app', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
