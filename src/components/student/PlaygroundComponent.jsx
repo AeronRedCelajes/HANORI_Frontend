@@ -7,11 +7,7 @@ import '../../style/student/playground.css'; // Ensure the correct import path
 export const PlaygroundComponent = () => {
     const navigate_dashboard = useNavigate();
 
-    const handleDashboardClick = () => {
-        navigate_dashboard('/student/dashboard');
-    };
-
-    // Dropdown for language selection
+    // State for language selection
     const [selectedLanguage, setSelectedLanguage] = useState({ name: 'Java', imgSrc: '/src/assets/java2.png' });
 
     const handleSelect = (language) => {
@@ -23,6 +19,7 @@ export const PlaygroundComponent = () => {
         setSelectedLanguage({ name: language, imgSrc: imgSources[language] });
     };
 
+    // Language mapping for API
     const languageMap = {
         'C#': 'cs',
         'Java': 'java',
@@ -38,24 +35,27 @@ export const PlaygroundComponent = () => {
     const [output, setOutput] = useState('');
     const [loading, setLoading] = useState(false);
 
+    // Function to run the code
     const handleRunCode = async () => {
         setLoading(true);
-        setOutput('');
+        setOutput(''); // Clear previous output
 
-        // Check if the code matches the selected language
+        // Ensure selected language is supported
+        const validLanguages = Object.keys(languageMap);
+        if (!validLanguages.includes(selectedLanguage.name)) {
+            setOutput('Error: Unsupported language selected.');
+            setLoading(false);
+            return;
+        }
+
+        // Validate if the entered code matches the selected language
         if (!isValidCodeForSelectedLanguage(code, selectedLanguage.name)) {
             setOutput(`Error: Your code does not match the selected language (${selectedLanguage.name}).`);
             setLoading(false);
             return;
         }
 
-        if (!['Java', 'Python', 'C#'].includes(selectedLanguage.name)) {
-            setOutput('Error: Unsupported language selected.');
-            setLoading(false);
-            return;
-        }
-
-        // Check if the code requires input but none is provided
+        // Check if input is required but not provided
         if (requiresInput(code, selectedLanguage.name) && input.trim() === '') {
             setOutput('Error: Your code requires input, but no input was provided.');
             setLoading(false);
@@ -100,15 +100,15 @@ export const PlaygroundComponent = () => {
         }
     };
 
-    // Function to check if the code matches the selected language
+    // Function to validate if the entered code matches the selected language
     const isValidCodeForSelectedLanguage = (code, language) => {
         const patterns = {
             'Java': /\b(public\s+class\s+\w+|System\.out\.println|import\s+java\.)\b/,
-            'Python': /\b(def\s+\w+\(|print\(|import\s+\w+|class\s+\w+)\b/,
+            'Python': /\b(print\s*\(|def\s+\w+\(|import\s+\w+|class\s+\w+|for\s+\w+\s+in|while\s+|if\s+)/,
             'C#': /\b(using\s+System;|namespace\s+\w+|Console\.WriteLine)\b/
         };
 
-        return patterns[language].test(code);
+        return patterns[language]?.test(code.trim());
     };
 
     // Function to check if the code contains an input statement
@@ -119,7 +119,7 @@ export const PlaygroundComponent = () => {
             'C#': /\bConsole\.ReadLine\(\)/
         };
 
-        return inputPatterns[language].test(code);
+        return inputPatterns[language]?.test(code);
     };
 
     return (
